@@ -32,3 +32,14 @@ data/raw/*.csv
 .DS_Store
 Thumbs.db
 
+
+# Local datasets and generated artifacts
+data/
+extracted/
+archive/
+clean_output/
+results/
+activity_telemetry/experiments/checkpoints/
+activity_telemetry/experiments/results/
+activity_telemetry/validation/figures/
+activity_telemetry/validation/results/
