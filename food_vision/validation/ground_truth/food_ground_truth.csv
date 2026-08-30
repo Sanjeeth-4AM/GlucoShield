@@ -1,0 +1,18 @@
+food_id,food_name,category,synonyms,ground_truth_status,ref_carbs_100g,ref_protein_100g,ref_fat_100g,ref_calories_100g,typical_serving_g,source_reference
+1,banana,Simple,raw banana|banana,VERIFIED_REFERENCE,22.84,1.09,0.33,89.0,118.0,USDA FoodData Central SR Legacy (110265)
+2,apple,Simple,raw apple|fresh apple,VERIFIED_REFERENCE,13.81,0.26,0.17,52.0,182.0,USDA FoodData Central SR Legacy (110264)
+3,rice,Simple,white rice|cooked rice|steamed rice|basmati rice,VERIFIED_REFERENCE,28.17,2.69,0.28,130.0,150.0,USDA FoodData Central SR Legacy (110166)
+4,bread,Simple,white bread|wheat bread|sliced bread,VERIFIED_REFERENCE,49.42,8.85,3.33,265.0,50.0,USDA FoodData Central SR Legacy (110058)
+5,samosa,Indian,samosas|vegetable samosa|potato samosa,DATABASE_REFERENCE,33.16,5.14,17.47,310.0,80.0,USDA Survey / FDC (234567) & FSSAI Reference
+6,idli,Indian,steamed idli|idly|rice cake,DATABASE_REFERENCE,24.98,6.36,0.35,128.0,90.0,USDA Survey Foods (234120) & IFCT 2017
+7,dosa,Indian,masala dosa|plain dosa|dosai,DATABASE_REFERENCE,30.80,5.46,4.27,184.0,120.0,USDA Survey Foods (234121) & IFCT 2017
+8,roti,Indian,chapati|roti|phulka|flatbread,DATABASE_REFERENCE,46.10,9.20,3.70,264.0,40.0,USDA Foundation & IFCT 2017
+9,dal,Indian,lentil soup|dal tadka|cooked lentils|yellow dal,DATABASE_REFERENCE,19.50,9.02,0.38,116.0,150.0,USDA SR Legacy (110185) & IFCT 2017
+10,biryani,Indian,vegetable biryani|chicken biryani|biriyani,DATABASE_REFERENCE,24.50,8.20,6.50,190.0,250.0,USDA Survey Foods & IFCT 2017
+11,pizza,Composite,cheese pizza|pizza slice|veg pizza,DATABASE_REFERENCE,32.00,11.00,10.00,266.0,107.0,USDA Fast Foods / SR Legacy (110300)
+12,burger,Composite,hamburger|veggie burger|cheeseburger,DATABASE_REFERENCE,24.00,13.00,12.00,256.0,150.0,USDA Fast Foods (110310)
+13,pasta,Composite,cooked pasta|spaghetti with marinara|penne,DATABASE_REFERENCE,30.86,5.80,0.93,158.0,200.0,USDA SR Legacy (110190)
+14,fried_rice,Composite,egg fried rice|vegetable fried rice,DATABASE_REFERENCE,31.20,5.20,4.10,183.0,200.0,USDA Survey Foods (110200)
+15,rolled_oats,Packaged,oatmeal|rolled oats|quaker oats,VERIFIED_REFERENCE,66.30,16.90,6.90,389.0,40.0,USDA FoodData Central / Open Food Facts
+16,greek_yogurt,Packaged,plain greek yogurt|strained yogurt,VERIFIED_REFERENCE,3.60,10.00,0.40,59.0,150.0,USDA FoodData Central / Open Food Facts
+17,biscuit,Packaged,digestive biscuit|cookie|wheat biscuit,DATABASE_REFERENCE,68.00,7.10,18.00,462.0,30.0,Open Food Facts / USDA Branded

@@ -1,0 +1,12 @@
+{
+  "validation_timestamp": "2026-08-28T17:00:00",
+  "total_benchmark_cases": 17,
+  "overall_lookup_success_pct": 100.0,
+  "overall_rec_top3_pct": 52.94,
+  "files_generated": [
+    "recognition_metrics.json",
+    "nutrition_lookup_metrics.json",
+    "portion_scaling_metrics.json",
+    "human_correction_results.json"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "patient_id": "demo_patient_001",
+  "history_readings": [
+    {
+      "timestamp": "2026-08-28T00:00:00",
+      "cgm_glucose": 125.0,
+      "insulin_bolus": 0.0,
+      "insulin_basal": 0.5,
+      "meal_carbs": 0.0
+    }
+  ],
+  "static_profile": {
+    "age": 45.0,
+    "bmi": 26.5,
+    "hba1c": 58.0,
+    "glycated_albumin": 18.0,
+    "fasting_glucose": 130.0,
+    "fasting_c_peptide": 0.8,
+    "macrovascular_comp_count": 0.0,
+    "microvascular_comp_count": 0.0,
+    "is_t1dm": 1.0
+  },
+  "wearable_context": {
+    "steps_15m": [120.0, 85.0],
+    "heart_rate_bpm": [72.0, 75.0],
+    "device_source": "TicWatch Pro"
+  }
+}

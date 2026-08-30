@@ -1,0 +1,204 @@
+{
+  "total_cases": 17,
+  "exact_match_count": 14,
+  "close_match_count": 3,
+  "ambiguous_count": 0,
+  "not_found_count": 0,
+  "exact_match_rate_pct": 82.35,
+  "exact_plus_close_match_rate_pct": 100.0,
+  "category_success_rate_pct": {
+    "Simple": 100.0,
+    "Indian": 100.0,
+    "Composite": 100.0,
+    "Packaged": 100.0
+  },
+  "detailed_results": [
+    {
+      "food_name": "banana",
+      "category": "Simple",
+      "search_query": "banana",
+      "returned_food_description": "Banana, raw",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 22.84,
+      "ref_carbs_100g": 22.84,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "apple",
+      "category": "Simple",
+      "search_query": "apple",
+      "returned_food_description": "Apple, raw",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 13.81,
+      "ref_carbs_100g": 13.81,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "rice",
+      "category": "Simple",
+      "search_query": "white rice",
+      "returned_food_description": "Rice, white, cooked",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 28.17,
+      "ref_carbs_100g": 28.17,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "bread",
+      "category": "Simple",
+      "search_query": "white bread",
+      "returned_food_description": "Bread, white, sliced",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 49.42,
+      "ref_carbs_100g": 49.42,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "samosa",
+      "category": "Indian",
+      "search_query": "samosa",
+      "returned_food_description": "Samosa, vegetable",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 33.16,
+      "ref_carbs_100g": 33.16,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "idli",
+      "category": "Indian",
+      "search_query": "idli",
+      "returned_food_description": "Idli, steamed rice-lentil cake",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 24.98,
+      "ref_carbs_100g": 24.98,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "dosa",
+      "category": "Indian",
+      "search_query": "dosa",
+      "returned_food_description": "Dosa, fermented crepe with filling",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 30.8,
+      "ref_carbs_100g": 30.8,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "roti",
+      "category": "Indian",
+      "search_query": "chapati",
+      "returned_food_description": "Chapati / Roti, whole wheat",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 46.1,
+      "ref_carbs_100g": 46.1,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "dal",
+      "category": "Indian",
+      "search_query": "cooked lentils",
+      "returned_food_description": "Lentils, mature seeds, cooked, boiled",
+      "match_tier": "CLOSE_MATCH",
+      "ret_carbs_100g": 20.13,
+      "ref_carbs_100g": 19.5,
+      "carb_abs_diff_100g": 0.63,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "biryani",
+      "category": "Indian",
+      "search_query": "biryani",
+      "returned_food_description": "Biryani, spiced rice dish",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 24.5,
+      "ref_carbs_100g": 24.5,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "pizza",
+      "category": "Composite",
+      "search_query": "pizza",
+      "returned_food_description": "Pizza, cheese topping, regular crust",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 32.0,
+      "ref_carbs_100g": 32.0,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "burger",
+      "category": "Composite",
+      "search_query": "hamburger",
+      "returned_food_description": "Hamburger, single patty, plain",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 24.0,
+      "ref_carbs_100g": 24.0,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "pasta",
+      "category": "Composite",
+      "search_query": "cooked pasta",
+      "returned_food_description": "Pasta, cooked, unenriched",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 30.86,
+      "ref_carbs_100g": 30.86,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "fried_rice",
+      "category": "Composite",
+      "search_query": "fried rice",
+      "returned_food_description": "Fried rice, with meat or vegetables",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 31.2,
+      "ref_carbs_100g": 31.2,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "rolled_oats",
+      "category": "Packaged",
+      "search_query": "rolled oats",
+      "returned_food_description": "Cereals, oats, regular and quick, dry",
+      "match_tier": "CLOSE_MATCH",
+      "ret_carbs_100g": 66.3,
+      "ref_carbs_100g": 66.3,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "greek_yogurt",
+      "category": "Packaged",
+      "search_query": "greek yogurt",
+      "returned_food_description": "Yogurt, Greek, plain, whole milk",
+      "match_tier": "CLOSE_MATCH",
+      "ret_carbs_100g": 3.6,
+      "ref_carbs_100g": 3.6,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    },
+    {
+      "food_name": "biscuit",
+      "category": "Packaged",
+      "search_query": "digestive biscuit",
+      "returned_food_description": "Biscuits, digestive, whole wheat",
+      "match_tier": "EXACT_MATCH",
+      "ret_carbs_100g": 68.0,
+      "ref_carbs_100g": 68.0,
+      "carb_abs_diff_100g": 0.0,
+      "source": "USDA FoodData Central SR Legacy (Offline Reference Cache)"
+    }
+  ]
+}

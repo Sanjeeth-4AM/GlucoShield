@@ -1,0 +1,18 @@
+case_id,food_name,category,image_fixture_filename,intended_search_query,expected_match_tier,primary_lookup_provider,portion_g_test
+1,banana,Simple,sample_banana.png,banana,EXACT_MATCH,usda,118.0
+2,apple,Simple,sample_apple.png,apple,EXACT_MATCH,usda,182.0
+3,rice,Simple,sample_rice.png,white rice,EXACT_MATCH,usda,150.0
+4,bread,Simple,sample_bread.png,white bread,EXACT_MATCH,usda,50.0
+5,samosa,Indian,sample_samosa.png,samosa,EXACT_MATCH,usda,80.0
+6,idli,Indian,sample_idli.png,idli,EXACT_MATCH,usda,90.0
+7,dosa,Indian,sample_dosa.png,dosa,CLOSE_MATCH,usda,120.0
+8,roti,Indian,sample_roti.png,chapati,CLOSE_MATCH,usda,40.0
+9,dal,Indian,sample_dal.png,cooked lentils,CLOSE_MATCH,usda,150.0
+10,biryani,Indian,sample_biryani.png,biryani,CLOSE_MATCH,usda,250.0
+11,pizza,Composite,sample_pizza.png,pizza,EXACT_MATCH,usda,107.0
+12,burger,Composite,sample_burger.png,hamburger,CLOSE_MATCH,usda,150.0
+13,pasta,Composite,sample_pasta.png,cooked pasta,EXACT_MATCH,usda,200.0
+14,fried_rice,Composite,sample_fried_rice.png,fried rice,CLOSE_MATCH,usda,200.0
+15,rolled_oats,Packaged,sample_oats.png,rolled oats,EXACT_MATCH,openfoodfacts,40.0
+16,greek_yogurt,Packaged,sample_yogurt.png,greek yogurt,EXACT_MATCH,openfoodfacts,150.0
+17,biscuit,Packaged,sample_biscuit.png,digestive biscuit,CLOSE_MATCH,openfoodfacts,30.0

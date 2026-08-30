@@ -1,0 +1,46 @@
+{
+  "case_a_high_conf_accepted": {
+    "scenario": "Correct food predicted with high confidence (Samosa 88%)",
+    "predicted_food": null,
+    "final_confirmed_food": "Samosa",
+    "calculated_carbs_g": null,
+    "requires_confirmation": true
+  },
+  "case_b_candidate_selection": {
+    "scenario": "Correct item in Top-3 (Spring Roll index 1)",
+    "selected_candidate": null,
+    "requires_confirmation": true
+  },
+  "case_c_manual_override": {
+    "scenario": "AI predicted wrong item -> User manually searched 'idli'",
+    "user_corrected_food": "idli",
+    "final_carbs_g": 22.5,
+    "source": "mock_usda_reference"
+  },
+  "case_d_low_confidence": {
+    "scenario": "Low confidence prediction (32%)",
+    "mandatory_confirmation_enforced": true,
+    "warnings": [
+      "Low visual recognition confidence (32.0% for 'unclear_curry'). Please confirm or select the correct item.",
+      "Nutritional lookup unavailable for 'unclear_curry'. Please enter carbohydrate grams manually.",
+      "Advisory estimate only. Photo recognition cannot measure hidden oils, sugars, or exact recipe ratios."
+    ]
+  },
+  "case_e_ambiguous_composite": {
+    "scenario": "Ambiguous composite dish (|top1 - top2| = 0.04)",
+    "mandatory_confirmation_enforced": true,
+    "warnings": [
+      "Visual ambiguity detected between 'paneer_pizza' and 'cheese_flatbread'. Please verify the dish selection.",
+      "Nutritional lookup unavailable for 'paneer_pizza'. Please enter carbohydrate grams manually.",
+      "Advisory estimate only. Photo recognition cannot measure hidden oils, sugars, or exact recipe ratios."
+    ]
+  },
+  "case_f_database_miss": {
+    "scenario": "Food not found in database",
+    "requires_user_confirmation": true,
+    "warnings": [
+      "Nutritional lookup unavailable for 'unknown_regional_pancake_88'. Please enter carbohydrate grams manually.",
+      "Advisory estimate only. Photo recognition cannot measure hidden oils, sugars, or exact recipe ratios."
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "scaling_tests_total": 30,
+  "scaling_all_passed": true,
+  "portion_error_percentages": [
+    -50,
+    -25,
+    -10,
+    10,
+    25,
+    50
+  ],
+  "sensitivity_summary": {
+    "greek_yogurt": {
+      "tier": "Low-Carb (3.6g/100g)",
+      "true_carbs": 5.4,
+      "errors_g": [
+        -2.7,
+        -1.35,
+        -0.54,
+        0.54,
+        1.35,
+        2.7
+      ]
+    },
+    "samosa": {
+      "tier": "Medium-Carb (33.2g/100g)",
+      "true_carbs": 33.16,
+      "errors_g": [
+        -16.58,
+        -8.29,
+        -3.32,
+        3.32,
+        8.29,
+        16.58
+      ]
+    },
+    "rice": {
+      "tier": "Medium-Carb (28.2g/100g)",
+      "true_carbs": 42.26,
+      "errors_g": [
+        -21.13,
+        -10.56,
+        -4.23,
+        4.23,
+        10.56,
+        21.13
+      ]
+    },
+    "bread": {
+      "tier": "High-Carb (49.4g/100g)",
+      "true_carbs": 49.42,
+      "errors_g": [
+        -24.71,
+        -12.36,
+        -4.94,
+        4.94,
+        12.35,
+        24.71
+      ]
+    },
+    "rolled_oats": {
+      "tier": "High-Carb (66.3g/100g)",
+      "true_carbs": 53.04,
+      "errors_g": [
+        -26.52,
+        -13.26,
+        -5.3,
+        5.3,
+        13.26,
+        26.52
+      ]
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "total_cases": 17,
+  "overall_top1_accuracy_pct": 23.53,
+  "overall_top3_accuracy_pct": 52.94,
+  "category_performance": {
+    "Simple": {
+      "top1_acc_pct": 50.0,
+      "top3_acc_pct": 100.0,
+      "total": 4
+    },
+    "Indian": {
+      "top1_acc_pct": 0.0,
+      "top3_acc_pct": 16.7,
+      "total": 6
+    },
+    "Composite": {
+      "top1_acc_pct": 50.0,
+      "top3_acc_pct": 100.0,
+      "total": 4
+    },
+    "Packaged": {
+      "top1_acc_pct": 0.0,
+      "top3_acc_pct": 0.0,
+      "total": 3
+    }
+  },
+  "live_endpoint_status": "OFFLINE_DETERMINISTIC_EVAL",
+  "notes": "Food-101 vision domain performs well on Western/Simple foods (Top-3 100%), but requires manual search fallback for regional Indian staples (Idli/Dosa/Roti)."
+}

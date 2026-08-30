@@ -1,0 +1,12 @@
+{
+  "patient_id": "demo_patient_001",
+  "meal_food_query": "pasta bolognese",
+  "meal_portion_g": 250.0,
+  "proposed_insulin_bolus_u": 5.5,
+  "static_profile": {
+    "age": 45.0,
+    "bmi": 26.5,
+    "hba1c": 58.0,
+    "is_t1dm": 1.0
+  }
+}
