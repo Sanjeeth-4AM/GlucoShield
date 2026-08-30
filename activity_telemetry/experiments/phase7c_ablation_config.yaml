@@ -1,0 +1,141 @@
+# GlucoShield Phase 7C Multimodal Activity Ablation Experiment Configuration
+# Pre-Registered Research Protocol — Version 2.1.0 (13-Participant LOOCV Protocol)
+# Certified Date: 2026-08-28
+
+experiment:
+  name: "phase7c_multimodal_wearable_ablation"
+  protocol_version: "2.1.0"
+  target_dataset: "Glucdict - Wearable Sensors and CGM (DOI: 10.6084/m9.figshare.25939312)"
+  benchmark_domain: "endogenous_glucose_wearable_ablation"
+  domain_clarification: >
+    This benchmark evaluates whether wearable physical activity telemetry (PPG Heart Rate,
+    Hardware Steps, 3D Accelerometer) improves forecasting of endogenous/free-living glucose dynamics.
+    It is an isolated multimodal ablation experiment, NOT a direct reproduction or clinical extension
+    of the original Type 1 Diabetes insulin-aware GlucoShield V1 hybrid ODE digital twin.
+  temporal_resolution_minutes: 15
+  history_timesteps: 96      # 24 hours at 15m
+  forecast_timesteps: 20     # 5 hours at 15m
+  random_seed: 42
+
+cohort_definition:
+  discovered_participants_count: 13
+  eligible_participants_count: 13
+  eligible_participant_ids:
+    - "User1"
+    - "User3"
+    - "User4"
+    - "User5"
+    - "User6"
+    - "User7"
+    - "User8"
+    - "User9"
+    - "User10"
+    - "User12"
+    - "User13"
+    - "User14"
+    - "User15"
+  absent_participants:
+    - "User2"
+    - "User11"
+  absent_participants_note: "User2 and User11 are absent from the published Figshare repository archive."
+  recording_duration_days:
+    min: 6.38
+    max: 9.91
+    median: 9.91
+    mean: 9.54
+  total_usable_15m_windows: 11903
+
+cross_validation_protocol:
+  strategy: "deterministic_13_fold_participant_disjoint_cv"
+  total_participants: 13
+  number_of_folds: 13
+  per_fold_partition:
+    train_participants_count: 11
+    val_participants_count: 1
+    test_participants_count: 1
+  test_coverage_rule: "Each participant appears as held-out test participant exactly once across the 13 folds."
+  out_of_fold_evaluation_count: 13
+  statistical_unit_description: "13 paired out-of-fold participant-level error observations, where each participant appears exactly once as a held-out test participant across the complete cross-validation procedure."
+
+models:
+  model_a_baseline:
+    name: "GlucoShield_Unimodal_V1_Clone"
+    architecture: "GRU"
+    hidden_dim: 128
+    num_layers: 2
+    dropout: 0.20
+    dynamic_channels_count: 22
+    description: "Baseline using 22 base channels (CGM, derivatives, rolling stats, unobserved meal/COB channels, circadian)."
+    
+  model_b_multimodal:
+    name: "GlucoShield_Multimodal_V2"
+    architecture: "GRU"
+    hidden_dim: 128
+    num_layers: 2
+    dropout: 0.25
+    dynamic_channels_count: 28
+    base_channels_count: 22
+    activity_channels:
+      - name: "steps_15m"
+        type: "continuous"
+        description: "15-minute cumulative mechanical steps from TicWatch hardware step detector (Sensor 18)."
+      - name: "hr_mean_15m"
+        type: "continuous"
+        description: "15-minute mean optical PPG heart rate (bpm) from TicWatch (Sensor 21)."
+      - name: "hr_std_15m"
+        type: "continuous"
+        description: "15-minute heart rate standard deviation (bpm) from TicWatch (Sensor 21)."
+      - name: "accel_mag_15m"
+        type: "continuous"
+        description: "15-minute mean 3D acceleration Euclidean magnitude (g) from TicWatch (Sensor 1)."
+      - name: "active_load_60m"
+        type: "continuous"
+        description: "Causal 60-minute exponentially decayed active load (gamma=0.75) computed from steps_15m."
+      - name: "sensor_missing"
+        type: "binary"
+        description: "Binary missingness indicator (1 if sensor coverage < 30%)."
+
+omitted_features:
+  - name: "hr_reserve_pct"
+    reason: "Strictly collinear (r = 1.000) with hr_mean_15m when baseline RHR is static per participant."
+
+channel_contracts:
+  baseline_22_channels:
+    channels_1_to_15: "Directly derived from Dexcom G6 5-minute CGM (glucose, velocity, acceleration, rolling stats 1h/2h/4h)."
+    channels_16_17_22: "Directly derived from timestamps (sin_time, cos_time, day_of_week)."
+    channel_18_bolus_dose: "Constant 0.0 (Biological reality: non-insulin-dependent cohort; no exogenous boluses administered)."
+    channel_19_iob: "Constant 0.0 (Biological reality: non-insulin-dependent cohort; zero active exogenous IOB)."
+    channel_20_meal_carbs: "UNOBSERVED / MISSING (Raw dataset contains discrete eating activity timestamps without gram weights; explicitly tracked as unobserved channel, NOT biological 0.0g meals)."
+    channel_21_cob: "UNOBSERVED / NOT COMPUTABLE (Carbohydrate absorption curve cannot be computed without gram weights; explicitly tracked as unobserved channel)."
+
+unobserved_channel_representation:
+  tensor_encoding: "Standardized zero-imputed value accompanied by explicit metadata missingness classification; Model A and Model B receive identical tensor representation."
+
+scaling_and_normalization:
+  scaler_type: "RobustScaler"
+  fit_partition_rule: "FIT ON THE 11 TRAIN PARTICIPANTS ONLY PER FOLD"
+  save_fitted_parameters: true
+  prevent_global_leakage: true
+
+validation_and_early_stopping:
+  early_stopping_metric: "val_mae"
+  patience_epochs: 10
+  evaluation_source: "EVALUATE ONLY ON THAT FOLD'S 1 VALIDATION PARTICIPANT"
+
+causality_and_leakage_safeguards:
+  enforce_strict_past_only: true
+  active_load_memory: "strictly_backward"
+  lookahead_tolerance_seconds: 0
+
+statistical_hypothesis_testing:
+  test_type: "scipy.stats.wilcoxon"
+  paired_unit: "participant_level_out_of_fold_mae"
+  sample_size_n: 13
+  zero_method: "wilcox"
+  alternative: "two-sided"
+  significance_level: 0.05
+  minimum_attainable_p_value: 0.000244  # 2 / (2^13)
+  overall_mae_threshold_mg_dl: 1.0
+  active_and_recovery_mae_threshold_mg_dl: 3.0
+  recovery_window_hours: 3.0
+  rejection_threshold_mg_dl: 0.5
