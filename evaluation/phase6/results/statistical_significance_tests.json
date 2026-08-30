@@ -1,0 +1,98 @@
+{
+  "Hybrid_Forecaster_vs_Neural_GRU_V1": {
+    "comparison": "Hybrid vs. Neural GRU V1",
+    "sample_size_patients": 17,
+    "mae_difference": {
+      "mean": -0.337,
+      "median": -0.23,
+      "std": 0.372,
+      "wilcoxon_stat": 15.5,
+      "wilcoxon_p_value": 0.003876640910261041,
+      "shapiro_normality_p": 0.3603,
+      "paired_t_stat": -3.736,
+      "paired_t_p_value": 0.0017995762419055063,
+      "cohen_d": -0.906,
+      "patients_improved": 14,
+      "patients_worsened": 3,
+      "patients_tied": 0
+    },
+    "rmse_difference": {
+      "mean": -0.153,
+      "median": -0.33,
+      "std": 0.409,
+      "wilcoxon_stat": 43.0,
+      "wilcoxon_p_value": 0.11272825580802456,
+      "shapiro_normality_p": 0.2233,
+      "paired_t_stat": -1.542,
+      "paired_t_p_value": 0.14265872001479846,
+      "cohen_d": -0.374,
+      "patients_improved": 10,
+      "patients_worsened": 7,
+      "patients_tied": 0
+    }
+  },
+  "Hybrid_Forecaster_vs_Ridge": {
+    "comparison": "Hybrid vs. Classical Ridge",
+    "sample_size_patients": 17,
+    "mae_difference": {
+      "mean": -1.113,
+      "median": -1.39,
+      "std": 1.115,
+      "wilcoxon_stat": 13.0,
+      "wilcoxon_p_value": 0.0013427734375,
+      "shapiro_normality_p": 0.1908,
+      "paired_t_stat": -4.114,
+      "paired_t_p_value": 0.0008121301140860528,
+      "cohen_d": -0.998,
+      "patients_improved": 15,
+      "patients_worsened": 2,
+      "patients_tied": 0
+    },
+    "rmse_difference": {
+      "mean": -1.2,
+      "median": -1.1,
+      "std": 1.663,
+      "wilcoxon_stat": 27.0,
+      "wilcoxon_p_value": 0.019100457212993343,
+      "shapiro_normality_p": 0.0129,
+      "paired_t_stat": -2.975,
+      "paired_t_p_value": 0.00892835281908231,
+      "cohen_d": -0.722,
+      "patients_improved": 15,
+      "patients_worsened": 2,
+      "patients_tied": 0
+    }
+  },
+  "Hybrid_Forecaster_vs_Standalone_ODE": {
+    "comparison": "Hybrid vs. Standalone ODE",
+    "sample_size_patients": 17,
+    "mae_difference": {
+      "mean": -16.356,
+      "median": -12.02,
+      "std": 11.94,
+      "wilcoxon_stat": 1.0,
+      "wilcoxon_p_value": 3.0517578125e-05,
+      "shapiro_normality_p": 0.037,
+      "paired_t_stat": -5.648,
+      "paired_t_p_value": 3.63036788565864e-05,
+      "cohen_d": -1.37,
+      "patients_improved": 16,
+      "patients_worsened": 1,
+      "patients_tied": 0
+    },
+    "rmse_difference": {
+      "mean": -16.09,
+      "median": -11.15,
+      "std": 13.153,
+      "wilcoxon_stat": 1.0,
+      "wilcoxon_p_value": 3.0517578125e-05,
+      "shapiro_normality_p": 0.0676,
+      "paired_t_stat": -5.044,
+      "paired_t_p_value": 0.00011982606863392534,
+      "cohen_d": -1.223,
+      "patients_improved": 16,
+      "patients_worsened": 1,
+      "patients_tied": 0
+    }
+  }
+}

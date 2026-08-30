@@ -1,0 +1,1064 @@
+{
+  "horizon_trajectories": [
+    {
+      "step": 1,
+      "horizon_min": 15,
+      "label": "15m",
+      "Persistence_MAE": 6.89,
+      "Persistence_RMSE": 10.25,
+      "Persistence_Clarke_AB": 99.78,
+      "LinearTrend_MAE": 8.03,
+      "LinearTrend_RMSE": 11.76,
+      "LinearTrend_Clarke_AB": 99.59,
+      "Ridge_MAE": 4.5,
+      "Ridge_RMSE": 6.41,
+      "Ridge_Clarke_AB": 99.88,
+      "Neural_GRU_V1_MAE": 10.24,
+      "Neural_GRU_V1_RMSE": 14.91,
+      "Neural_GRU_V1_Clarke_AB": 99.1,
+      "Standalone_ODE_MAE": 9.33,
+      "Standalone_ODE_RMSE": 12.23,
+      "Standalone_ODE_Clarke_AB": 98.05,
+      "Hybrid_Forecaster_MAE": 6.73,
+      "Hybrid_Forecaster_RMSE": 8.93,
+      "Hybrid_Forecaster_Clarke_AB": 99.39
+    },
+    {
+      "step": 2,
+      "horizon_min": 30,
+      "label": "30m",
+      "Persistence_MAE": 12.82,
+      "Persistence_RMSE": 18.78,
+      "Persistence_Clarke_AB": 98.44,
+      "LinearTrend_MAE": 15.35,
+      "LinearTrend_RMSE": 22.29,
+      "LinearTrend_Clarke_AB": 96.99,
+      "Ridge_MAE": 9.98,
+      "Ridge_RMSE": 14.24,
+      "Ridge_Clarke_AB": 99.1,
+      "Neural_GRU_V1_MAE": 12.19,
+      "Neural_GRU_V1_RMSE": 17.44,
+      "Neural_GRU_V1_Clarke_AB": 98.57,
+      "Standalone_ODE_MAE": 19.88,
+      "Standalone_ODE_RMSE": 25.52,
+      "Standalone_ODE_Clarke_AB": 96.01,
+      "Hybrid_Forecaster_MAE": 11.16,
+      "Hybrid_Forecaster_RMSE": 16.16,
+      "Hybrid_Forecaster_Clarke_AB": 98.83
+    },
+    {
+      "step": 3,
+      "horizon_min": 45,
+      "label": "45m",
+      "Persistence_MAE": 17.76,
+      "Persistence_RMSE": 25.75,
+      "Persistence_Clarke_AB": 97.11,
+      "LinearTrend_MAE": 22.0,
+      "LinearTrend_RMSE": 31.75,
+      "LinearTrend_Clarke_AB": 93.46,
+      "Ridge_MAE": 14.22,
+      "Ridge_RMSE": 20.46,
+      "Ridge_Clarke_AB": 98.03,
+      "Neural_GRU_V1_MAE": 15.0,
+      "Neural_GRU_V1_RMSE": 21.71,
+      "Neural_GRU_V1_Clarke_AB": 98.23,
+      "Standalone_ODE_MAE": 28.66,
+      "Standalone_ODE_RMSE": 36.87,
+      "Standalone_ODE_Clarke_AB": 95.31,
+      "Hybrid_Forecaster_MAE": 14.6,
+      "Hybrid_Forecaster_RMSE": 21.45,
+      "Hybrid_Forecaster_Clarke_AB": 98.32
+    },
+    {
+      "step": 4,
+      "horizon_min": 60,
+      "label": "60m",
+      "Persistence_MAE": 21.82,
+      "Persistence_RMSE": 31.49,
+      "Persistence_Clarke_AB": 95.55,
+      "LinearTrend_MAE": 28.01,
+      "LinearTrend_RMSE": 40.25,
+      "LinearTrend_Clarke_AB": 89.76,
+      "Ridge_MAE": 17.79,
+      "Ridge_RMSE": 25.37,
+      "Ridge_Clarke_AB": 96.96,
+      "Neural_GRU_V1_MAE": 17.78,
+      "Neural_GRU_V1_RMSE": 25.69,
+      "Neural_GRU_V1_Clarke_AB": 97.25,
+      "Standalone_ODE_MAE": 35.18,
+      "Standalone_ODE_RMSE": 45.21,
+      "Standalone_ODE_Clarke_AB": 90.71,
+      "Hybrid_Forecaster_MAE": 17.48,
+      "Hybrid_Forecaster_RMSE": 25.6,
+      "Hybrid_Forecaster_Clarke_AB": 97.2
+    },
+    {
+      "step": 5,
+      "horizon_min": 75,
+      "label": "75m",
+      "Persistence_MAE": 25.22,
+      "Persistence_RMSE": 36.26,
+      "Persistence_Clarke_AB": 94.53,
+      "LinearTrend_MAE": 33.65,
+      "LinearTrend_RMSE": 47.96,
+      "LinearTrend_Clarke_AB": 86.87,
+      "Ridge_MAE": 20.64,
+      "Ridge_RMSE": 29.24,
+      "Ridge_Clarke_AB": 96.57,
+      "Neural_GRU_V1_MAE": 20.05,
+      "Neural_GRU_V1_RMSE": 29.0,
+      "Neural_GRU_V1_Clarke_AB": 96.57,
+      "Standalone_ODE_MAE": 39.68,
+      "Standalone_ODE_RMSE": 50.62,
+      "Standalone_ODE_Clarke_AB": 89.74,
+      "Hybrid_Forecaster_MAE": 19.84,
+      "Hybrid_Forecaster_RMSE": 28.9,
+      "Hybrid_Forecaster_Clarke_AB": 96.52
+    },
+    {
+      "step": 6,
+      "horizon_min": 90,
+      "label": "90m",
+      "Persistence_MAE": 28.48,
+      "Persistence_RMSE": 40.48,
+      "Persistence_Clarke_AB": 93.53,
+      "LinearTrend_MAE": 39.28,
+      "LinearTrend_RMSE": 55.25,
+      "LinearTrend_Clarke_AB": 83.27,
+      "Ridge_MAE": 23.1,
+      "Ridge_RMSE": 32.4,
+      "Ridge_Clarke_AB": 95.58,
+      "Neural_GRU_V1_MAE": 22.14,
+      "Neural_GRU_V1_RMSE": 31.72,
+      "Neural_GRU_V1_Clarke_AB": 95.65,
+      "Standalone_ODE_MAE": 42.33,
+      "Standalone_ODE_RMSE": 53.91,
+      "Standalone_ODE_Clarke_AB": 89.67,
+      "Hybrid_Forecaster_MAE": 21.9,
+      "Hybrid_Forecaster_RMSE": 31.54,
+      "Hybrid_Forecaster_Clarke_AB": 95.55
+    },
+    {
+      "step": 7,
+      "horizon_min": 105,
+      "label": "105m",
+      "Persistence_MAE": 31.38,
+      "Persistence_RMSE": 44.24,
+      "Persistence_Clarke_AB": 92.49,
+      "LinearTrend_MAE": 44.66,
+      "LinearTrend_RMSE": 62.14,
+      "LinearTrend_Clarke_AB": 79.77,
+      "Ridge_MAE": 25.18,
+      "Ridge_RMSE": 35.03,
+      "Ridge_Clarke_AB": 95.26,
+      "Neural_GRU_V1_MAE": 23.91,
+      "Neural_GRU_V1_RMSE": 33.97,
+      "Neural_GRU_V1_Clarke_AB": 95.16,
+      "Standalone_ODE_MAE": 43.87,
+      "Standalone_ODE_RMSE": 55.76,
+      "Standalone_ODE_Clarke_AB": 89.84,
+      "Hybrid_Forecaster_MAE": 23.64,
+      "Hybrid_Forecaster_RMSE": 33.75,
+      "Hybrid_Forecaster_Clarke_AB": 95.31
+    },
+    {
+      "step": 8,
+      "horizon_min": 120,
+      "label": "120m",
+      "Persistence_MAE": 33.97,
+      "Persistence_RMSE": 47.34,
+      "Persistence_Clarke_AB": 91.15,
+      "LinearTrend_MAE": 49.63,
+      "LinearTrend_RMSE": 68.37,
+      "LinearTrend_Clarke_AB": 76.68,
+      "Ridge_MAE": 26.84,
+      "Ridge_RMSE": 36.97,
+      "Ridge_Clarke_AB": 94.75,
+      "Neural_GRU_V1_MAE": 25.32,
+      "Neural_GRU_V1_RMSE": 35.65,
+      "Neural_GRU_V1_Clarke_AB": 94.6,
+      "Standalone_ODE_MAE": 44.81,
+      "Standalone_ODE_RMSE": 56.74,
+      "Standalone_ODE_Clarke_AB": 89.35,
+      "Hybrid_Forecaster_MAE": 25.01,
+      "Hybrid_Forecaster_RMSE": 35.46,
+      "Hybrid_Forecaster_Clarke_AB": 94.77
+    },
+    {
+      "step": 9,
+      "horizon_min": 135,
+      "label": "135m",
+      "Persistence_MAE": 36.11,
+      "Persistence_RMSE": 49.83,
+      "Persistence_Clarke_AB": 90.54,
+      "LinearTrend_MAE": 54.23,
+      "LinearTrend_RMSE": 74.01,
+      "LinearTrend_Clarke_AB": 74.08,
+      "Ridge_MAE": 28.22,
+      "Ridge_RMSE": 38.37,
+      "Ridge_Clarke_AB": 94.43,
+      "Neural_GRU_V1_MAE": 26.3,
+      "Neural_GRU_V1_RMSE": 36.67,
+      "Neural_GRU_V1_Clarke_AB": 94.53,
+      "Standalone_ODE_MAE": 45.43,
+      "Standalone_ODE_RMSE": 57.24,
+      "Standalone_ODE_Clarke_AB": 89.25,
+      "Hybrid_Forecaster_MAE": 26.02,
+      "Hybrid_Forecaster_RMSE": 36.52,
+      "Hybrid_Forecaster_Clarke_AB": 94.72
+    },
+    {
+      "step": 10,
+      "horizon_min": 150,
+      "label": "150m",
+      "Persistence_MAE": 37.8,
+      "Persistence_RMSE": 51.99,
+      "Persistence_Clarke_AB": 89.93,
+      "LinearTrend_MAE": 58.51,
+      "LinearTrend_RMSE": 79.38,
+      "LinearTrend_Clarke_AB": 71.02,
+      "Ridge_MAE": 29.21,
+      "Ridge_RMSE": 39.46,
+      "Ridge_Clarke_AB": 94.09,
+      "Neural_GRU_V1_MAE": 26.87,
+      "Neural_GRU_V1_RMSE": 37.34,
+      "Neural_GRU_V1_Clarke_AB": 94.58,
+      "Standalone_ODE_MAE": 45.64,
+      "Standalone_ODE_RMSE": 57.5,
+      "Standalone_ODE_Clarke_AB": 89.03,
+      "Hybrid_Forecaster_MAE": 26.78,
+      "Hybrid_Forecaster_RMSE": 37.24,
+      "Hybrid_Forecaster_Clarke_AB": 94.58
+    },
+    {
+      "step": 11,
+      "horizon_min": 165,
+      "label": "165m",
+      "Persistence_MAE": 39.38,
+      "Persistence_RMSE": 53.86,
+      "Persistence_Clarke_AB": 89.62,
+      "LinearTrend_MAE": 62.48,
+      "LinearTrend_RMSE": 84.34,
+      "LinearTrend_Clarke_AB": 68.56,
+      "Ridge_MAE": 29.89,
+      "Ridge_RMSE": 40.29,
+      "Ridge_Clarke_AB": 94.16,
+      "Neural_GRU_V1_MAE": 27.44,
+      "Neural_GRU_V1_RMSE": 37.91,
+      "Neural_GRU_V1_Clarke_AB": 94.72,
+      "Standalone_ODE_MAE": 45.69,
+      "Standalone_ODE_RMSE": 57.57,
+      "Standalone_ODE_Clarke_AB": 88.99,
+      "Hybrid_Forecaster_MAE": 27.38,
+      "Hybrid_Forecaster_RMSE": 37.96,
+      "Hybrid_Forecaster_Clarke_AB": 94.55
+    },
+    {
+      "step": 12,
+      "horizon_min": 180,
+      "label": "180m",
+      "Persistence_MAE": 40.84,
+      "Persistence_RMSE": 55.36,
+      "Persistence_Clarke_AB": 88.77,
+      "LinearTrend_MAE": 66.21,
+      "LinearTrend_RMSE": 88.82,
+      "LinearTrend_Clarke_AB": 65.91,
+      "Ridge_MAE": 30.41,
+      "Ridge_RMSE": 40.8,
+      "Ridge_Clarke_AB": 93.78,
+      "Neural_GRU_V1_MAE": 27.88,
+      "Neural_GRU_V1_RMSE": 38.37,
+      "Neural_GRU_V1_Clarke_AB": 94.14,
+      "Standalone_ODE_MAE": 45.73,
+      "Standalone_ODE_RMSE": 57.53,
+      "Standalone_ODE_Clarke_AB": 88.35,
+      "Hybrid_Forecaster_MAE": 27.89,
+      "Hybrid_Forecaster_RMSE": 38.51,
+      "Hybrid_Forecaster_Clarke_AB": 94.12
+    },
+    {
+      "step": 13,
+      "horizon_min": 195,
+      "label": "195m",
+      "Persistence_MAE": 41.88,
+      "Persistence_RMSE": 56.48,
+      "Persistence_Clarke_AB": 88.31,
+      "LinearTrend_MAE": 69.56,
+      "LinearTrend_RMSE": 92.95,
+      "LinearTrend_Clarke_AB": 63.6,
+      "Ridge_MAE": 30.75,
+      "Ridge_RMSE": 41.02,
+      "Ridge_Clarke_AB": 93.85,
+      "Neural_GRU_V1_MAE": 28.17,
+      "Neural_GRU_V1_RMSE": 38.65,
+      "Neural_GRU_V1_Clarke_AB": 94.24,
+      "Standalone_ODE_MAE": 45.85,
+      "Standalone_ODE_RMSE": 57.47,
+      "Standalone_ODE_Clarke_AB": 87.99,
+      "Hybrid_Forecaster_MAE": 28.21,
+      "Hybrid_Forecaster_RMSE": 38.83,
+      "Hybrid_Forecaster_Clarke_AB": 94.21
+    },
+    {
+      "step": 14,
+      "horizon_min": 210,
+      "label": "210m",
+      "Persistence_MAE": 42.67,
+      "Persistence_RMSE": 57.39,
+      "Persistence_Clarke_AB": 88.06,
+      "LinearTrend_MAE": 72.7,
+      "LinearTrend_RMSE": 96.85,
+      "LinearTrend_Clarke_AB": 61.76,
+      "Ridge_MAE": 30.98,
+      "Ridge_RMSE": 41.11,
+      "Ridge_Clarke_AB": 94.02,
+      "Neural_GRU_V1_MAE": 28.28,
+      "Neural_GRU_V1_RMSE": 38.85,
+      "Neural_GRU_V1_Clarke_AB": 94.29,
+      "Standalone_ODE_MAE": 45.79,
+      "Standalone_ODE_RMSE": 57.42,
+      "Standalone_ODE_Clarke_AB": 87.26,
+      "Hybrid_Forecaster_MAE": 28.39,
+      "Hybrid_Forecaster_RMSE": 39.03,
+      "Hybrid_Forecaster_Clarke_AB": 94.29
+    },
+    {
+      "step": 15,
+      "horizon_min": 225,
+      "label": "225m",
+      "Persistence_MAE": 43.22,
+      "Persistence_RMSE": 58.13,
+      "Persistence_Clarke_AB": 87.96,
+      "LinearTrend_MAE": 75.57,
+      "LinearTrend_RMSE": 100.32,
+      "LinearTrend_Clarke_AB": 60.0,
+      "Ridge_MAE": 30.94,
+      "Ridge_RMSE": 41.18,
+      "Ridge_Clarke_AB": 94.29,
+      "Neural_GRU_V1_MAE": 28.46,
+      "Neural_GRU_V1_RMSE": 39.18,
+      "Neural_GRU_V1_Clarke_AB": 94.19,
+      "Standalone_ODE_MAE": 45.72,
+      "Standalone_ODE_RMSE": 57.36,
+      "Standalone_ODE_Clarke_AB": 87.41,
+      "Hybrid_Forecaster_MAE": 28.55,
+      "Hybrid_Forecaster_RMSE": 39.32,
+      "Hybrid_Forecaster_Clarke_AB": 94.38
+    },
+    {
+      "step": 16,
+      "horizon_min": 240,
+      "label": "240m",
+      "Persistence_MAE": 43.81,
+      "Persistence_RMSE": 58.78,
+      "Persistence_Clarke_AB": 87.79,
+      "LinearTrend_MAE": 78.31,
+      "LinearTrend_RMSE": 103.68,
+      "LinearTrend_Clarke_AB": 58.35,
+      "Ridge_MAE": 30.94,
+      "Ridge_RMSE": 41.17,
+      "Ridge_Clarke_AB": 94.02,
+      "Neural_GRU_V1_MAE": 28.93,
+      "Neural_GRU_V1_RMSE": 39.64,
+      "Neural_GRU_V1_Clarke_AB": 93.82,
+      "Standalone_ODE_MAE": 45.71,
+      "Standalone_ODE_RMSE": 57.31,
+      "Standalone_ODE_Clarke_AB": 87.09,
+      "Hybrid_Forecaster_MAE": 29.01,
+      "Hybrid_Forecaster_RMSE": 39.7,
+      "Hybrid_Forecaster_Clarke_AB": 94.16
+    },
+    {
+      "step": 17,
+      "horizon_min": 255,
+      "label": "255m",
+      "Persistence_MAE": 44.12,
+      "Persistence_RMSE": 59.28,
+      "Persistence_Clarke_AB": 87.6,
+      "LinearTrend_MAE": 80.85,
+      "LinearTrend_RMSE": 106.99,
+      "LinearTrend_Clarke_AB": 56.84,
+      "Ridge_MAE": 31.0,
+      "Ridge_RMSE": 41.09,
+      "Ridge_Clarke_AB": 93.99,
+      "Neural_GRU_V1_MAE": 29.4,
+      "Neural_GRU_V1_RMSE": 40.08,
+      "Neural_GRU_V1_Clarke_AB": 93.97,
+      "Standalone_ODE_MAE": 45.8,
+      "Standalone_ODE_RMSE": 57.27,
+      "Standalone_ODE_Clarke_AB": 87.09,
+      "Hybrid_Forecaster_MAE": 29.42,
+      "Hybrid_Forecaster_RMSE": 40.14,
+      "Hybrid_Forecaster_Clarke_AB": 94.09
+    },
+    {
+      "step": 18,
+      "horizon_min": 270,
+      "label": "270m",
+      "Persistence_MAE": 44.52,
+      "Persistence_RMSE": 59.65,
+      "Persistence_Clarke_AB": 87.6,
+      "LinearTrend_MAE": 83.19,
+      "LinearTrend_RMSE": 110.1,
+      "LinearTrend_Clarke_AB": 55.12,
+      "Ridge_MAE": 31.02,
+      "Ridge_RMSE": 41.02,
+      "Ridge_Clarke_AB": 94.26,
+      "Neural_GRU_V1_MAE": 29.74,
+      "Neural_GRU_V1_RMSE": 40.47,
+      "Neural_GRU_V1_Clarke_AB": 94.12,
+      "Standalone_ODE_MAE": 45.75,
+      "Standalone_ODE_RMSE": 57.23,
+      "Standalone_ODE_Clarke_AB": 86.94,
+      "Hybrid_Forecaster_MAE": 29.8,
+      "Hybrid_Forecaster_RMSE": 40.56,
+      "Hybrid_Forecaster_Clarke_AB": 94.16
+    },
+    {
+      "step": 19,
+      "horizon_min": 285,
+      "label": "285m",
+      "Persistence_MAE": 44.88,
+      "Persistence_RMSE": 59.99,
+      "Persistence_Clarke_AB": 87.38,
+      "LinearTrend_MAE": 85.39,
+      "LinearTrend_RMSE": 112.95,
+      "LinearTrend_Clarke_AB": 53.34,
+      "Ridge_MAE": 30.91,
+      "Ridge_RMSE": 41.06,
+      "Ridge_Clarke_AB": 94.58,
+      "Neural_GRU_V1_MAE": 30.13,
+      "Neural_GRU_V1_RMSE": 41.05,
+      "Neural_GRU_V1_Clarke_AB": 94.02,
+      "Standalone_ODE_MAE": 45.69,
+      "Standalone_ODE_RMSE": 57.19,
+      "Standalone_ODE_Clarke_AB": 87.41,
+      "Hybrid_Forecaster_MAE": 30.13,
+      "Hybrid_Forecaster_RMSE": 41.16,
+      "Hybrid_Forecaster_Clarke_AB": 94.24
+    },
+    {
+      "step": 20,
+      "horizon_min": 300,
+      "label": "300m",
+      "Persistence_MAE": 45.17,
+      "Persistence_RMSE": 60.36,
+      "Persistence_Clarke_AB": 87.21,
+      "LinearTrend_MAE": 87.61,
+      "LinearTrend_RMSE": 115.76,
+      "LinearTrend_Clarke_AB": 52.08,
+      "Ridge_MAE": 30.95,
+      "Ridge_RMSE": 41.11,
+      "Ridge_Clarke_AB": 94.26,
+      "Neural_GRU_V1_MAE": 30.77,
+      "Neural_GRU_V1_RMSE": 41.77,
+      "Neural_GRU_V1_Clarke_AB": 93.78,
+      "Standalone_ODE_MAE": 45.68,
+      "Standalone_ODE_RMSE": 57.16,
+      "Standalone_ODE_Clarke_AB": 87.09,
+      "Hybrid_Forecaster_MAE": 30.9,
+      "Hybrid_Forecaster_RMSE": 41.89,
+      "Hybrid_Forecaster_Clarke_AB": 93.7
+    }
+  ],
+  "clinical_ranges": {
+    "Hypoglycemia (<70 mg/dL)": {
+      "sample_points": 3181,
+      "prevalence_pct": 3.87,
+      "models": {
+        "Persistence": {
+          "MAE": 28.2,
+          "RMSE": 47.65
+        },
+        "LinearTrend": {
+          "MAE": 40.57,
+          "RMSE": 71.85
+        },
+        "Ridge": {
+          "MAE": 37.06,
+          "RMSE": 46.66
+        },
+        "Neural_GRU_V1": {
+          "MAE": 34.45,
+          "RMSE": 42.35
+        },
+        "Standalone_ODE": {
+          "MAE": 93.56,
+          "RMSE": 98.54
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 34.13,
+          "RMSE": 41.97
+        }
+      }
+    },
+    "Euglycemia (70-180 mg/dL)": {
+      "sample_points": 62029,
+      "prevalence_pct": 75.41,
+      "models": {
+        "Persistence": {
+          "MAE": 28.65,
+          "RMSE": 40.87
+        },
+        "LinearTrend": {
+          "MAE": 50.17,
+          "RMSE": 74.67
+        },
+        "Ridge": {
+          "MAE": 19.59,
+          "RMSE": 26.62
+        },
+        "Neural_GRU_V1": {
+          "MAE": 18.94,
+          "RMSE": 26.54
+        },
+        "Standalone_ODE": {
+          "MAE": 31.2,
+          "RMSE": 38.9
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 18.42,
+          "RMSE": 25.84
+        }
+      }
+    },
+    "Hyperglycemia (>180 mg/dL)": {
+      "sample_points": 17050,
+      "prevalence_pct": 20.73,
+      "models": {
+        "Persistence": {
+          "MAE": 55.2,
+          "RMSE": 71.35
+        },
+        "LinearTrend": {
+          "MAE": 78.93,
+          "RMSE": 103.51
+        },
+        "Ridge": {
+          "MAE": 44.24,
+          "RMSE": 56.56
+        },
+        "Neural_GRU_V1": {
+          "MAE": 42.63,
+          "RMSE": 54.58
+        },
+        "Standalone_ODE": {
+          "MAE": 64.97,
+          "RMSE": 77.87
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 43.12,
+          "RMSE": 55.47
+        }
+      }
+    }
+  },
+  "velocity_trends": {
+    "Falling Rapidly (v < -2.0)": {
+      "sequence_count": 1505,
+      "prevalence_pct": 36.59,
+      "models": {
+        "Persistence": {
+          "MAE": 36.24,
+          "RMSE": 50.54
+        },
+        "LinearTrend": {
+          "MAE": 61.54,
+          "RMSE": 88.91
+        },
+        "Ridge": {
+          "MAE": 26.1,
+          "RMSE": 36.78
+        },
+        "Neural_GRU_V1": {
+          "MAE": 24.95,
+          "RMSE": 35.48
+        },
+        "Standalone_ODE": {
+          "MAE": 41.23,
+          "RMSE": 52.13
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 24.61,
+          "RMSE": 35.33
+        }
+      }
+    },
+    "Falling (-2.0 <= v < -0.5)": {
+      "sequence_count": 445,
+      "prevalence_pct": 10.82,
+      "models": {
+        "Persistence": {
+          "MAE": 29.59,
+          "RMSE": 45.0
+        },
+        "LinearTrend": {
+          "MAE": 50.62,
+          "RMSE": 74.1
+        },
+        "Ridge": {
+          "MAE": 22.1,
+          "RMSE": 32.59
+        },
+        "Neural_GRU_V1": {
+          "MAE": 20.89,
+          "RMSE": 31.17
+        },
+        "Standalone_ODE": {
+          "MAE": 39.08,
+          "RMSE": 50.09
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 20.73,
+          "RMSE": 31.17
+        }
+      }
+    },
+    "Stable (-0.5 <= v <= +0.5)": {
+      "sequence_count": 532,
+      "prevalence_pct": 12.93,
+      "models": {
+        "Persistence": {
+          "MAE": 27.2,
+          "RMSE": 42.8
+        },
+        "LinearTrend": {
+          "MAE": 43.74,
+          "RMSE": 66.04
+        },
+        "Ridge": {
+          "MAE": 21.95,
+          "RMSE": 32.0
+        },
+        "Neural_GRU_V1": {
+          "MAE": 21.11,
+          "RMSE": 30.92
+        },
+        "Standalone_ODE": {
+          "MAE": 41.92,
+          "RMSE": 54.12
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 21.01,
+          "RMSE": 30.99
+        }
+      }
+    },
+    "Rising (+0.5 < v <= +2.0)": {
+      "sequence_count": 382,
+      "prevalence_pct": 9.29,
+      "models": {
+        "Persistence": {
+          "MAE": 30.32,
+          "RMSE": 44.64
+        },
+        "LinearTrend": {
+          "MAE": 47.56,
+          "RMSE": 70.52
+        },
+        "Ridge": {
+          "MAE": 23.37,
+          "RMSE": 32.81
+        },
+        "Neural_GRU_V1": {
+          "MAE": 22.1,
+          "RMSE": 31.79
+        },
+        "Standalone_ODE": {
+          "MAE": 36.01,
+          "RMSE": 47.45
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 21.75,
+          "RMSE": 31.63
+        }
+      }
+    },
+    "Rising Rapidly (v > +2.0)": {
+      "sequence_count": 1249,
+      "prevalence_pct": 30.37,
+      "models": {
+        "Persistence": {
+          "MAE": 37.34,
+          "RMSE": 52.17
+        },
+        "LinearTrend": {
+          "MAE": 58.26,
+          "RMSE": 83.4
+        },
+        "Ridge": {
+          "MAE": 27.74,
+          "RMSE": 38.03
+        },
+        "Neural_GRU_V1": {
+          "MAE": 27.26,
+          "RMSE": 37.84
+        },
+        "Standalone_ODE": {
+          "MAE": 41.25,
+          "RMSE": 55.05
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 26.86,
+          "RMSE": 37.64
+        }
+      }
+    }
+  },
+  "subgroups": {
+    "Diabetes_T1DM": {
+      "patient_count": 2,
+      "sequence_count": 507,
+      "is_exploratory": true,
+      "models": {
+        "Ridge": {
+          "MAE": 28.74,
+          "RMSE": 38.45,
+          "Clarke_AB": 88.59
+        },
+        "Neural_GRU_V1": {
+          "MAE": 26.98,
+          "RMSE": 37.3,
+          "Clarke_AB": 89.32
+        },
+        "Standalone_ODE": {
+          "MAE": 61.93,
+          "RMSE": 73.64,
+          "Clarke_AB": 73.16
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 26.94,
+          "RMSE": 37.2,
+          "Clarke_AB": 89.38
+        }
+      }
+    },
+    "Diabetes_T2DM": {
+      "patient_count": 15,
+      "sequence_count": 3606,
+      "is_exploratory": false,
+      "models": {
+        "Ridge": {
+          "MAE": 24.9,
+          "RMSE": 35.41,
+          "Clarke_AB": 96.24
+        },
+        "Neural_GRU_V1": {
+          "MAE": 24.09,
+          "RMSE": 34.55,
+          "Clarke_AB": 96.11
+        },
+        "Standalone_ODE": {
+          "MAE": 37.61,
+          "RMSE": 49.0,
+          "Clarke_AB": 91.95
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 23.75,
+          "RMSE": 34.42,
+          "Clarke_AB": 96.2
+        }
+      }
+    },
+    "Age_<55 Years": {
+      "patient_count": 5,
+      "sequence_count": 1144,
+      "models": {
+        "Ridge": {
+          "MAE": 26.1,
+          "RMSE": 36.65,
+          "Clarke_AB": 90.66
+        },
+        "Neural_GRU_V1": {
+          "MAE": 24.58,
+          "RMSE": 34.55,
+          "Clarke_AB": 90.86
+        },
+        "Standalone_ODE": {
+          "MAE": 49.99,
+          "RMSE": 59.98,
+          "Clarke_AB": 83.93
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 24.31,
+          "RMSE": 34.4,
+          "Clarke_AB": 90.95
+        }
+      }
+    },
+    "Age_55-65 Years": {
+      "patient_count": 4,
+      "sequence_count": 654,
+      "models": {
+        "Ridge": {
+          "MAE": 22.26,
+          "RMSE": 31.57,
+          "Clarke_AB": 96.65
+        },
+        "Neural_GRU_V1": {
+          "MAE": 21.65,
+          "RMSE": 30.6,
+          "Clarke_AB": 96.34
+        },
+        "Standalone_ODE": {
+          "MAE": 34.04,
+          "RMSE": 42.06,
+          "Clarke_AB": 94.85
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 21.19,
+          "RMSE": 30.31,
+          "Clarke_AB": 96.41
+        }
+      }
+    },
+    "Age_>65 Years": {
+      "patient_count": 8,
+      "sequence_count": 2315,
+      "models": {
+        "Ridge": {
+          "MAE": 25.89,
+          "RMSE": 36.49,
+          "Clarke_AB": 97.2
+        },
+        "Neural_GRU_V1": {
+          "MAE": 25.18,
+          "RMSE": 36.19,
+          "Clarke_AB": 97.16
+        },
+        "Standalone_ODE": {
+          "MAE": 37.83,
+          "RMSE": 51.49,
+          "Clarke_AB": 90.97
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 24.9,
+          "RMSE": 36.11,
+          "Clarke_AB": 97.23
+        }
+      }
+    },
+    "BMI_<23 kg/m2": {
+      "patient_count": 6,
+      "sequence_count": 1479,
+      "models": {
+        "Ridge": {
+          "MAE": 28.66,
+          "RMSE": 40.32,
+          "Clarke_AB": 93.61
+        },
+        "Neural_GRU_V1": {
+          "MAE": 27.8,
+          "RMSE": 40.11,
+          "Clarke_AB": 93.95
+        },
+        "Standalone_ODE": {
+          "MAE": 52.02,
+          "RMSE": 66.61,
+          "Clarke_AB": 80.16
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 27.64,
+          "RMSE": 40.16,
+          "Clarke_AB": 94.1
+        }
+      }
+    },
+    "BMI_23-26 kg/m2": {
+      "patient_count": 8,
+      "sequence_count": 1566,
+      "models": {
+        "Ridge": {
+          "MAE": 25.54,
+          "RMSE": 36.23,
+          "Clarke_AB": 96.19
+        },
+        "Neural_GRU_V1": {
+          "MAE": 24.52,
+          "RMSE": 34.71,
+          "Clarke_AB": 96.3
+        },
+        "Standalone_ODE": {
+          "MAE": 35.68,
+          "RMSE": 43.81,
+          "Clarke_AB": 95.17
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 24.02,
+          "RMSE": 34.39,
+          "Clarke_AB": 96.37
+        }
+      }
+    },
+    "BMI_>26 kg/m2": {
+      "patient_count": 3,
+      "sequence_count": 1068,
+      "models": {
+        "Ridge": {
+          "MAE": 20.58,
+          "RMSE": 27.57,
+          "Clarke_AB": 96.31
+        },
+        "Neural_GRU_V1": {
+          "MAE": 19.7,
+          "RMSE": 26.4,
+          "Clarke_AB": 95.61
+        },
+        "Standalone_ODE": {
+          "MAE": 32.04,
+          "RMSE": 41.51,
+          "Clarke_AB": 94.62
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 19.48,
+          "RMSE": 26.26,
+          "Clarke_AB": 95.6
+        }
+      }
+    },
+    "HbA1c_<65 mmol/mol": {
+      "patient_count": 9,
+      "sequence_count": 2647,
+      "models": {
+        "Ridge": {
+          "MAE": 21.54,
+          "RMSE": 29.78,
+          "Clarke_AB": 95.71
+        },
+        "Neural_GRU_V1": {
+          "MAE": 20.48,
+          "RMSE": 28.84,
+          "Clarke_AB": 95.6
+        },
+        "Standalone_ODE": {
+          "MAE": 36.14,
+          "RMSE": 45.75,
+          "Clarke_AB": 92.76
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 20.2,
+          "RMSE": 28.68,
+          "Clarke_AB": 95.64
+        }
+      }
+    },
+    "HbA1c_65-80 mmol/mol": {
+      "patient_count": 3,
+      "sequence_count": 576,
+      "models": {
+        "Ridge": {
+          "MAE": 31.4,
+          "RMSE": 43.94,
+          "Clarke_AB": 94.08
+        },
+        "Neural_GRU_V1": {
+          "MAE": 31.31,
+          "RMSE": 43.95,
+          "Clarke_AB": 94.24
+        },
+        "Standalone_ODE": {
+          "MAE": 53.91,
+          "RMSE": 70.0,
+          "Clarke_AB": 76.83
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 31.3,
+          "RMSE": 44.38,
+          "Clarke_AB": 94.34
+        }
+      }
+    },
+    "HbA1c_>80 mmol/mol": {
+      "patient_count": 5,
+      "sequence_count": 890,
+      "models": {
+        "Ridge": {
+          "MAE": 32.87,
+          "RMSE": 45.11,
+          "Clarke_AB": 94.84
+        },
+        "Neural_GRU_V1": {
+          "MAE": 31.82,
+          "RMSE": 43.65,
+          "Clarke_AB": 94.99
+        },
+        "Standalone_ODE": {
+          "MAE": 45.31,
+          "RMSE": 58.5,
+          "Clarke_AB": 88.59
+        },
+        "Hybrid_Forecaster": {
+          "MAE": 31.25,
+          "RMSE": 43.21,
+          "Clarke_AB": 95.16
+        }
+      }
+    }
+  },
+  "component_ablation_table": [
+    {
+      "Component": "1. Persistence (Zero-Order Hold)",
+      "Split": "Test",
+      "MAE": 34.14,
+      "RMSE": 49.01,
+      "Clarke_AB": 91.85,
+      "Contribution": "Static baseline assuming no glycemic change"
+    },
+    {
+      "Component": "2. Linear Trend Extrapolation",
+      "Split": "Test",
+      "MAE": 55.76,
+      "RMSE": 81.39,
+      "Clarke_AB": 82.1,
+      "Contribution": "Linear velocity projection (diverges at long horizons)"
+    },
+    {
+      "Component": "3. Classical Ridge Regularized Baseline",
+      "Split": "Test",
+      "MAE": 25.37,
+      "RMSE": 35.8,
+      "Clarke_AB": 93.31,
+      "Contribution": "L2 linear regularizer over 22-channel flat history"
+    },
+    {
+      "Component": "4. Pure Standalone Population ODE",
+      "Split": "Val (Cached)",
+      "MAE": 34.01,
+      "RMSE": 49.74,
+      "Clarke_AB": 91.32,
+      "Contribution": "Uncalibrated first-principles 6-compartment mass balance"
+    },
+    {
+      "Component": "5. Biomarker-Prior Personalized ODE",
+      "Split": "Val (Cached)",
+      "MAE": 34.33,
+      "RMSE": 46.58,
+      "Clarke_AB": 90.85,
+      "Contribution": "Tier 1 static MLP mapping 9 biomarkers to baseline parameters"
+    },
+    {
+      "Component": "6. Standalone Calibrated ODE (Tier 1+2)",
+      "Split": "Test",
+      "MAE": 40.61,
+      "RMSE": 52.67,
+      "Clarke_AB": 89.65,
+      "Contribution": "Moving horizon calibrated standalone physics simulation"
+    },
+    {
+      "Component": "7. Neural Forecaster V1 (GRU-128)",
+      "Split": "Test",
+      "MAE": 24.45,
+      "RMSE": 34.9,
+      "Clarke_AB": 95.28,
+      "Contribution": "Deep recurrent multi-task sequence pattern learning"
+    },
+    {
+      "Component": "8. Full Adaptive Gated Hybrid Forecaster",
+      "Split": "Test",
+      "MAE": 24.14,
+      "RMSE": 34.77,
+      "Clarke_AB": 95.36,
+      "Contribution": "Differentiable gated blending of Neural + ODE physics"
+    }
+  ]
+}

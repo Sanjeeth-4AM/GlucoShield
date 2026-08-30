@@ -1,0 +1,444 @@
+{
+  "dataset_name": "GlucoShield Cleaned Clinical Digital-Twin Dataset",
+  "dataset_version": "1.0.0-locked",
+  "audit_timestamp": "2026-08-23T14:15:00Z",
+  "auditor_role": "Lead ML/Data Validation Engineer",
+  "audit_decision": "PASS",
+  "sampling_rate_minutes": 15,
+  "input_window_steps": 96,
+  "input_window_hours": 24,
+  "forecast_horizon_steps": 20,
+  "forecast_horizon_hours": 5,
+  "stride_steps": 4,
+  "stride_hours": 1,
+  "dynamic_feature_count": 22,
+  "static_feature_count": 9,
+  "splits": {
+    "train": {
+      "patients": 78,
+      "sequences": 19749,
+      "hypo_4h_rate": 0.07149729132652283,
+      "hyper_4h_rate": 0.41369181871414185
+    },
+    "val": {
+      "patients": 17,
+      "sequences": 4585,
+      "hypo_4h_rate": 0.10425300151109695,
+      "hyper_4h_rate": 0.36968374252319336
+    },
+    "test": {
+      "patients": 17,
+      "sequences": 4113,
+      "hypo_4h_rate": 0.10308776795864105,
+      "hyper_4h_rate": 0.42742523550987244
+    }
+  },
+  "file_inventory": {
+    "data/final/X_test_raw.npy": {
+      "path": "data/final/X_test_raw.npy",
+      "size_bytes": 34746752,
+      "size_mb": 33.137,
+      "sha256": "2750cff56389f303b23348f0ed429990ef8791c88c3d436f8f4ea3ee75972dd6"
+    },
+    "data/final/X_test_scaled.npy": {
+      "path": "data/final/X_test_scaled.npy",
+      "size_bytes": 34746752,
+      "size_mb": 33.137,
+      "sha256": "d4463fbf50de3211aca1616a283e6410e730ead73a0796460a01626083e6b0c7"
+    },
+    "data/final/X_train_raw.npy": {
+      "path": "data/final/X_train_raw.npy",
+      "size_bytes": 166839680,
+      "size_mb": 159.111,
+      "sha256": "52c55bc35a979c22b51a3a070f339a77f47959617177efc9362db83bcd3638a6"
+    },
+    "data/final/X_train_scaled.npy": {
+      "path": "data/final/X_train_scaled.npy",
+      "size_bytes": 166839680,
+      "size_mb": 159.111,
+      "sha256": "e17487efba405cebaa727f8011e6ebee0ff41204918f931b1cf6e6ade847cb8f"
+    },
+    "data/final/X_val_raw.npy": {
+      "path": "data/final/X_val_raw.npy",
+      "size_bytes": 38734208,
+      "size_mb": 36.94,
+      "sha256": "d68fa6b24c82b0c65512db678982d07daccde447fe56a302fa3eb404d29754f9"
+    },
+    "data/final/X_val_scaled.npy": {
+      "path": "data/final/X_val_scaled.npy",
+      "size_bytes": 38734208,
+      "size_mb": 36.94,
+      "sha256": "aed78615062ac58fa301476ccfbcab7cc69d25e77790b7ef3c63833fb73e1fab"
+    },
+    "data/final/Y_test_hyper_2h.npy": {
+      "path": "data/final/Y_test_hyper_2h.npy",
+      "size_bytes": 16580,
+      "size_mb": 0.016,
+      "sha256": "22fff2be62e6a94bf80e674eb786cb761f8ef7bd2607ec798d89ed155debcb9c"
+    },
+    "data/final/Y_test_hyper_4h.npy": {
+      "path": "data/final/Y_test_hyper_4h.npy",
+      "size_bytes": 16580,
+      "size_mb": 0.016,
+      "sha256": "8213c82214b7d42675c64e890d4d892fac2593f351f02114f40b9874f921263e"
+    },
+    "data/final/Y_test_hypo_1h.npy": {
+      "path": "data/final/Y_test_hypo_1h.npy",
+      "size_bytes": 16580,
+      "size_mb": 0.016,
+      "sha256": "05d1493f3c34cd642283e836875bf8e02d605fd71cbf979c3960abb138c8c02c"
+    },
+    "data/final/Y_test_hypo_2h.npy": {
+      "path": "data/final/Y_test_hypo_2h.npy",
+      "size_bytes": 16580,
+      "size_mb": 0.016,
+      "sha256": "8b804e1724bfc5fe9f8c393536d9cfeea645349ee6a871650744abf518359927"
+    },
+    "data/final/Y_test_hypo_4h.npy": {
+      "path": "data/final/Y_test_hypo_4h.npy",
+      "size_bytes": 16580,
+      "size_mb": 0.016,
+      "sha256": "c648040273f4c153ab19b79bb36eff4632832d282b762d78f908f11a742afc74"
+    },
+    "data/final/Y_test_trajectory.npy": {
+      "path": "data/final/Y_test_trajectory.npy",
+      "size_bytes": 329168,
+      "size_mb": 0.314,
+      "sha256": "7e9785a5f197dd25cbc491110fe61f3d7fbd135cba877527cd2352a204bd02eb"
+    },
+    "data/final/Y_train_hyper_2h.npy": {
+      "path": "data/final/Y_train_hyper_2h.npy",
+      "size_bytes": 79124,
+      "size_mb": 0.075,
+      "sha256": "9e40c189b974d2a698a76e8919a4e3ed93557bf1bdf7843e1c32086d1bc74120"
+    },
+    "data/final/Y_train_hyper_4h.npy": {
+      "path": "data/final/Y_train_hyper_4h.npy",
+      "size_bytes": 79124,
+      "size_mb": 0.075,
+      "sha256": "8184c332187443f1eb89cf3afdc5234d28c4dda2531a6348dc698b4a81662b7f"
+    },
+    "data/final/Y_train_hypo_1h.npy": {
+      "path": "data/final/Y_train_hypo_1h.npy",
+      "size_bytes": 79124,
+      "size_mb": 0.075,
+      "sha256": "abd318f1fd0de3ce819f4a20ba32cbd85bb747bae9bcf577681b9cc714ce83d0"
+    },
+    "data/final/Y_train_hypo_2h.npy": {
+      "path": "data/final/Y_train_hypo_2h.npy",
+      "size_bytes": 79124,
+      "size_mb": 0.075,
+      "sha256": "7c7cb311c152662ae08783b98bcc0f13284f2909fcca95173cb32189aa288d07"
+    },
+    "data/final/Y_train_hypo_4h.npy": {
+      "path": "data/final/Y_train_hypo_4h.npy",
+      "size_bytes": 79124,
+      "size_mb": 0.075,
+      "sha256": "d8b562cc9a8f4c20e07047c01c919110c5fc912ee6579268d21baf4e14fec06e"
+    },
+    "data/final/Y_train_trajectory.npy": {
+      "path": "data/final/Y_train_trajectory.npy",
+      "size_bytes": 1580048,
+      "size_mb": 1.507,
+      "sha256": "f63fee64c8829d8038d489709ad716c8bfd921978e8f030ef4d7c949b8dce6ff"
+    },
+    "data/final/Y_val_hyper_2h.npy": {
+      "path": "data/final/Y_val_hyper_2h.npy",
+      "size_bytes": 18468,
+      "size_mb": 0.018,
+      "sha256": "c5731cb07847935df66e1f935ff3b8604286ac1f69cfef76a4dff8ea90dca7dd"
+    },
+    "data/final/Y_val_hyper_4h.npy": {
+      "path": "data/final/Y_val_hyper_4h.npy",
+      "size_bytes": 18468,
+      "size_mb": 0.018,
+      "sha256": "655f6ea4b0ce6497606d0c91c472ae098b8cd4abfb1acb6646646a22915e1f1f"
+    },
+    "data/final/Y_val_hypo_1h.npy": {
+      "path": "data/final/Y_val_hypo_1h.npy",
+      "size_bytes": 18468,
+      "size_mb": 0.018,
+      "sha256": "7a3c52d737cb9bc0142d98323aa80dfaaa64b4bbb34311f28000767c88072ed6"
+    },
+    "data/final/Y_val_hypo_2h.npy": {
+      "path": "data/final/Y_val_hypo_2h.npy",
+      "size_bytes": 18468,
+      "size_mb": 0.018,
+      "sha256": "0f6de03d6c4bbb302176b380acfc98e8e5fa7e285d6967e3e73d367ee859ef0a"
+    },
+    "data/final/Y_val_hypo_4h.npy": {
+      "path": "data/final/Y_val_hypo_4h.npy",
+      "size_bytes": 18468,
+      "size_mb": 0.018,
+      "sha256": "cbe3f4c8485568c6c83cfc612611c1f218f6ff2a96db8b1bd72d235ed6b10c33"
+    },
+    "data/final/Y_val_trajectory.npy": {
+      "path": "data/final/Y_val_trajectory.npy",
+      "size_bytes": 366928,
+      "size_mb": 0.35,
+      "sha256": "f5a1118a1f2613a81c874f4ac331a82b24f553467ede0c2502e48a7e28050816"
+    },
+    "data/final/meta_test.csv": {
+      "path": "data/final/meta_test.csv",
+      "size_bytes": 520552,
+      "size_mb": 0.496,
+      "sha256": "3aba638d48a858608cc0c0388e6160247bed57de09eafb094c228fb887643655"
+    },
+    "data/final/meta_train.csv": {
+      "path": "data/final/meta_train.csv",
+      "size_bytes": 2496729,
+      "size_mb": 2.381,
+      "sha256": "156e789c8e3b0e0916db7ee6568efae1a74673c49a6c105dd9235bd54284b726"
+    },
+    "data/final/meta_val.csv": {
+      "path": "data/final/meta_val.csv",
+      "size_bytes": 578781,
+      "size_mb": 0.552,
+      "sha256": "07add1d45edf326408d90a772c6317760bfc39bdc7c5fbac78f5bf75270ae997"
+    },
+    "data/final/static_test_raw.npy": {
+      "path": "data/final/static_test_raw.npy",
+      "size_bytes": 148196,
+      "size_mb": 0.141,
+      "sha256": "2274f0ef53cd196b27a1707fe436fe4ac1bf0e4f23fbfc17b961e55def437837"
+    },
+    "data/final/static_test_scaled.npy": {
+      "path": "data/final/static_test_scaled.npy",
+      "size_bytes": 148196,
+      "size_mb": 0.141,
+      "sha256": "7eb2675884ab9ac4c1b390b90a9601080b92c4502491e8bda8ba54f2f111ad14"
+    },
+    "data/final/static_train_raw.npy": {
+      "path": "data/final/static_train_raw.npy",
+      "size_bytes": 711092,
+      "size_mb": 0.678,
+      "sha256": "1b21133b5983784e9bf50ba4b08edb11147989bddf9da5742daf8d23c2584439"
+    },
+    "data/final/static_train_scaled.npy": {
+      "path": "data/final/static_train_scaled.npy",
+      "size_bytes": 711092,
+      "size_mb": 0.678,
+      "sha256": "91e5d8a262a10240ff698add69da9344c3e5e45b03fe4424babeedcea6c08e4c"
+    },
+    "data/final/static_val_raw.npy": {
+      "path": "data/final/static_val_raw.npy",
+      "size_bytes": 165188,
+      "size_mb": 0.158,
+      "sha256": "e9002dc43abb576d33eb1f4e4991063ff22af6b5775c266210a335d4330dc90c"
+    },
+    "data/final/static_val_scaled.npy": {
+      "path": "data/final/static_val_scaled.npy",
+      "size_bytes": 165188,
+      "size_mb": 0.158,
+      "sha256": "8074cc599782047c57ba3b51a572ec52ee7ddf8d69adf6b19174fd476fcc4a72"
+    },
+    "data/metadata/data_quality_report.txt": {
+      "path": "data/metadata/data_quality_report.txt",
+      "size_bytes": 2037,
+      "size_mb": 0.002,
+      "sha256": "4be14f6ca0c18b682cd51170036ca5332f2134d0610c1f3d059ae56c965ce637"
+    },
+    "data/metadata/dataset_manifest.json": {
+      "path": "data/metadata/dataset_manifest.json",
+      "size_bytes": 3839,
+      "size_mb": 0.004,
+      "sha256": "469a668869cc43841a303bba145986fe35ca68a7506fcbb469a83515877f9c66"
+    },
+    "data/metadata/feature_scaler.joblib": {
+      "path": "data/metadata/feature_scaler.joblib",
+      "size_bytes": 807,
+      "size_mb": 0.001,
+      "sha256": "757f5c99e294dc8c5698a42cee1843853e8506df5203508aa71a1462d545972b"
+    },
+    "data/metadata/static_scaler.joblib": {
+      "path": "data/metadata/static_scaler.joblib",
+      "size_bytes": 783,
+      "size_mb": 0.001,
+      "sha256": "fedc25f67dbcefd2c19ff38375568f3f2bc83ac1fa7c29840e5c81d33b479576"
+    },
+    "data/processed/cleaned_static_features.csv": {
+      "path": "data/processed/cleaned_static_features.csv",
+      "size_bytes": 10387,
+      "size_mb": 0.01,
+      "sha256": "c88169a17b52fdda88424739f647cd8c1f2e542b6c7b9d49f66641b02c5b076c"
+    },
+    "data/processed/cleaned_timeseries_all.csv": {
+      "path": "data/processed/cleaned_timeseries_all.csv",
+      "size_bytes": 35317434,
+      "size_mb": 33.681,
+      "sha256": "1306e369a9418f7872dea9b711729778c1d4c183a3452150d613baf6f37284b3"
+    }
+  },
+  "demographic_comparison": {
+    "age": {
+      "train_mean": 59.294871794871796,
+      "train_std": 13.494692534723665,
+      "train_median": 61.0,
+      "val_mean": 60.0,
+      "val_std": 14.773286702694158,
+      "val_median": 65.0,
+      "test_mean": 62.705882352941174,
+      "test_std": 12.117986146026661,
+      "test_median": 63.0
+    },
+    "bmi": {
+      "train_mean": 23.881515606545122,
+      "train_std": 3.535784365034014,
+      "train_median": 23.56320798556414,
+      "val_mean": 23.918303807251476,
+      "val_std": 3.99028938375142,
+      "val_median": 23.301094832264,
+      "test_mean": 23.284775137406587,
+      "test_std": 2.5720101974950085,
+      "test_median": 23.4375
+    },
+    "hba1c": {
+      "train_mean": 80.48914102564105,
+      "train_std": 27.6502400904183,
+      "train_median": 73.77700000000002,
+      "val_mean": 64.90441176470588,
+      "val_std": 19.029198873240905,
+      "val_median": 62.84700000000001,
+      "test_mean": 73.45552941176472,
+      "test_std": 29.330214359763993,
+      "test_median": 59.568
+    },
+    "fasting_glucose": {
+      "train_mean": 175.13307692307694,
+      "train_std": 74.87532701500807,
+      "train_median": 160.2,
+      "val_mean": 154.22823529411767,
+      "val_std": 48.239883944109735,
+      "val_median": 158.4,
+      "test_mean": 160.4964705882353,
+      "test_std": 44.25190913129857,
+      "test_median": 158.4
+    },
+    "fasting_c_peptide": {
+      "train_mean": 0.38371384615384607,
+      "train_std": 0.24346390832676262,
+      "train_median": 0.365,
+      "val_mean": 0.580995294117647,
+      "val_std": 0.35228686782077273,
+      "val_median": 0.6,
+      "test_mean": 0.37623764705882357,
+      "test_std": 0.2117331813724945,
+      "test_median": 0.365
+    },
+    "glycated_albumin": {
+      "train_mean": 25.942307692307693,
+      "train_std": 9.475196865730846,
+      "train_median": 22.6,
+      "val_mean": 21.058823529411764,
+      "val_std": 6.2085685571967195,
+      "val_median": 22.6,
+      "test_mean": 23.958823529411767,
+      "test_std": 9.536905867702153,
+      "test_median": 22.6
+    }
+  },
+  "split_statistics": {
+    "train": {
+      "num_sequences": 19749,
+      "X_shape": [
+        19749,
+        96,
+        22
+      ],
+      "static_shape": [
+        19749,
+        9
+      ],
+      "Y_trajectory_shape": [
+        19749,
+        20
+      ],
+      "unique_patients": 78,
+      "unique_records": 89,
+      "t1dm_sequences": 2514,
+      "t2dm_sequences": 17235,
+      "hypo_1h_rate": 0.03022937849164009,
+      "hypo_2h_rate": 0.04455921798944473,
+      "hypo_4h_rate": 0.07149729132652283,
+      "hyper_2h_rate": 0.3161679208278656,
+      "hyper_4h_rate": 0.41369181871414185,
+      "glucose_input_mean": 144.32083129882812,
+      "glucose_input_std": 53.905399322509766,
+      "glucose_target_mean": 142.8340301513672,
+      "glucose_target_std": 52.71868896484375,
+      "nan_count_X_raw": 0,
+      "nan_count_X_scaled": 0,
+      "nan_count_Y_traj": 0,
+      "inf_count_X_raw": 0,
+      "inf_count_X_scaled": 0
+    },
+    "val": {
+      "num_sequences": 4585,
+      "X_shape": [
+        4585,
+        96,
+        22
+      ],
+      "static_shape": [
+        4585,
+        9
+      ],
+      "Y_trajectory_shape": [
+        4585,
+        20
+      ],
+      "unique_patients": 17,
+      "unique_records": 18,
+      "t1dm_sequences": 449,
+      "t2dm_sequences": 4136,
+      "hypo_1h_rate": 0.06368593126535416,
+      "hypo_2h_rate": 0.07917121052742004,
+      "hypo_4h_rate": 0.10425300151109695,
+      "hyper_2h_rate": 0.28331515192985535,
+      "hyper_4h_rate": 0.36968374252319336,
+      "glucose_input_mean": 139.28416442871094,
+      "glucose_input_std": 53.14312744140625,
+      "glucose_target_mean": 138.36502075195312,
+      "glucose_target_std": 52.134403228759766,
+      "nan_count_X_raw": 0,
+      "nan_count_X_scaled": 0,
+      "nan_count_Y_traj": 0,
+      "inf_count_X_raw": 0,
+      "inf_count_X_scaled": 0
+    },
+    "test": {
+      "num_sequences": 4113,
+      "X_shape": [
+        4113,
+        96,
+        22
+      ],
+      "static_shape": [
+        4113,
+        9
+      ],
+      "Y_trajectory_shape": [
+        4113,
+        20
+      ],
+      "unique_patients": 17,
+      "unique_records": 18,
+      "t1dm_sequences": 507,
+      "t2dm_sequences": 3606,
+      "hypo_1h_rate": 0.05421833321452141,
+      "hypo_2h_rate": 0.07221006602048874,
+      "hypo_4h_rate": 0.10308776795864105,
+      "hyper_2h_rate": 0.3233649432659149,
+      "hyper_4h_rate": 0.42742523550987244,
+      "glucose_input_mean": 142.60406494140625,
+      "glucose_input_std": 56.18599319458008,
+      "glucose_target_mean": 141.47372436523438,
+      "glucose_target_std": 55.496315002441406,
+      "nan_count_X_raw": 0,
+      "nan_count_X_scaled": 0,
+      "nan_count_Y_traj": 0,
+      "inf_count_X_raw": 0,
+      "inf_count_X_scaled": 0
+    }
+  }
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "title": "Case 1: Best Forecast Case",
+    "sample_index": 3622,
+    "patient_id": "2087",
+    "diabetes_type": "T2DM",
+    "description": "Optimal trajectory alignment",
+    "hybrid_mae": 2.14,
+    "neural_gru_mae": 2.24,
+    "ridge_mae": 13.63,
+    "ode_mae": 24.5
+  },
+  {
+    "title": "Case 2: Median / Typical Case",
+    "sample_index": 595,
+    "patient_id": "2001",
+    "diabetes_type": "T2DM",
+    "description": "Everyday representative accuracy",
+    "hybrid_mae": 19.85,
+    "neural_gru_mae": 18.57,
+    "ridge_mae": 14.4,
+    "ode_mae": 7.33
+  },
+  {
+    "title": "Case 3: Worst Forecast Case",
+    "sample_index": 1309,
+    "patient_id": "2021",
+    "diabetes_type": "T2DM",
+    "description": "Major unmodeled glucose volatility / failure boundary",
+    "hybrid_mae": 137.94,
+    "neural_gru_mae": 132.53,
+    "ridge_mae": 122.37,
+    "ode_mae": 180.0
+  },
+  {
+    "title": "Case 4: Rapid Hypoglycemia Transition",
+    "sample_index": 3468,
+    "patient_id": "2075",
+    "diabetes_type": "T2DM",
+    "description": "Descent from euglycemia to hypoglycemia (<60 mg/dL)",
+    "hybrid_mae": 9.61,
+    "neural_gru_mae": 9.14,
+    "ridge_mae": 11.42,
+    "ode_mae": 44.04
+  },
+  {
+    "title": "Case 5: Post-Meal Glycemic Excursion",
+    "sample_index": 0,
+    "patient_id": "1004",
+    "diabetes_type": "T1DM",
+    "description": "Carbohydrate absorption and postprandial peak",
+    "hybrid_mae": 22.92,
+    "neural_gru_mae": 25.06,
+    "ridge_mae": 19.01,
+    "ode_mae": 42.41
+  },
+  {
+    "title": "Case 6: High Variability Dynamic",
+    "sample_index": 1309,
+    "patient_id": "2021",
+    "diabetes_type": "T2DM",
+    "description": "High historical volatility with model divergence",
+    "hybrid_mae": 137.94,
+    "neural_gru_mae": 132.53,
+    "ridge_mae": 122.37,
+    "ode_mae": 180.0
+  }
+]

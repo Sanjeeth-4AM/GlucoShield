@@ -1,0 +1,511 @@
+{
+  "model_name": "GlucoShield_MultiTask_GRU_GPU",
+  "hardware": "CUDA (NVIDIA GeForce RTX 4050 Laptop GPU) | PyTorch 2.13.0+cu126",
+  "selected_configuration": {
+    "cell_type": "gru",
+    "hidden": 128,
+    "layers": 1,
+    "dropout": 0.2,
+    "lr": 0.002,
+    "wd": 0.0001,
+    "traj_loss": "huber",
+    "lambda_risk": 5.0,
+    "meal_c_max": 200.0
+  },
+  "selected_seed": 42,
+  "multi_seed_stability": {
+    "seeds": [
+      42,
+      123,
+      7
+    ],
+    "val_rmse_mean": 31.422,
+    "val_rmse_std": 0.2912,
+    "val_mae_mean": 21.8707,
+    "val_mae_std": 0.2519,
+    "hypo4h_auprc_mean": 0.8281,
+    "hypo4h_auprc_std": 0.0044,
+    "per_seed": [
+      {
+        "seed": 42,
+        "best_epoch": 7,
+        "val_rmse": 31.010723114013672,
+        "val_mae": 21.539457321166992,
+        "clarke_ab_pct": 95.45474372955289,
+        "hypo_1h_auprc": 0.9289981962333695,
+        "hypo_2h_auprc": 0.8838837011087832,
+        "hypo_4h_auprc": 0.8243234087311905,
+        "hyper_2h_auprc": 0.9037158660235594,
+        "hyper_4h_auprc": 0.8924791760774556,
+        "hypo_4h_sensitivity": 0.6715481171548117,
+        "hypo_4h_specificity": 0.9873386900413927,
+        "train_time": 20.7
+      },
+      {
+        "seed": 123,
+        "best_epoch": 8,
+        "val_rmse": 31.609649658203125,
+        "val_mae": 22.149965286254883,
+        "clarke_ab_pct": 95.19302071973827,
+        "hypo_1h_auprc": 0.9405882163446689,
+        "hypo_2h_auprc": 0.884334742322485,
+        "hypo_4h_auprc": 0.825773564334421,
+        "hyper_2h_auprc": 0.9024963064875988,
+        "hyper_4h_auprc": 0.892769228844978,
+        "hypo_4h_sensitivity": 0.7510460251046025,
+        "hypo_4h_specificity": 0.96518139761383,
+        "train_time": 21.3
+      },
+      {
+        "seed": 7,
+        "best_epoch": 8,
+        "val_rmse": 31.645526885986328,
+        "val_mae": 21.92254066467285,
+        "clarke_ab_pct": 95.65976008724101,
+        "hypo_1h_auprc": 0.9359096845838769,
+        "hypo_2h_auprc": 0.8887995293367281,
+        "hypo_4h_auprc": 0.8342137974472987,
+        "hyper_2h_auprc": 0.9038404471783481,
+        "hyper_4h_auprc": 0.89542136648266,
+        "hypo_4h_sensitivity": 0.7719665271966527,
+        "hypo_4h_specificity": 0.9576333089846604,
+        "train_time": 18.9
+      }
+    ]
+  },
+  "validation_performance": {
+    "num_sequences": 4585,
+    "MAE": 21.539457321166992,
+    "RMSE": 31.010723114013672,
+    "Zone_A_pct": 72.98364231188658,
+    "Zone_B_pct": 22.471101417666304,
+    "Zone_AB_pct": 95.45474372955289
+  },
+  "test_performance": {
+    "overall": {
+      "num_sequences": 4113,
+      "MAE": 24.450252532958984,
+      "RMSE": 34.900962829589844,
+      "Zone_A_pct": 68.27619742280574,
+      "Zone_B_pct": 26.99975686846584,
+      "Zone_AB_pct": 95.27595429127157
+    },
+    "horizons": {
+      "15min (k=1)": {
+        "MAE": 10.240195274353027,
+        "RMSE": 14.907234191894531,
+        "Zone_AB_pct": 99.10041332360807
+      },
+      "30min (k=2)": {
+        "MAE": 12.191937446594238,
+        "RMSE": 17.438770294189453,
+        "Zone_AB_pct": 98.56552394845612
+      },
+      "45min (k=3)": {
+        "MAE": 14.996728897094727,
+        "RMSE": 21.710485458374023,
+        "Zone_AB_pct": 98.22513980063215
+      },
+      "1h (k=4)": {
+        "MAE": 17.7842960357666,
+        "RMSE": 25.693296432495117,
+        "Zone_AB_pct": 97.25261366399222
+      },
+      "2h (k=8)": {
+        "MAE": 25.31821060180664,
+        "RMSE": 35.648685455322266,
+        "Zone_AB_pct": 94.60247994164843
+      },
+      "3h (k=12)": {
+        "MAE": 27.875995635986328,
+        "RMSE": 38.36617660522461,
+        "Zone_AB_pct": 94.14053002674447
+      },
+      "4h (k=16)": {
+        "MAE": 28.933218002319336,
+        "RMSE": 39.63849639892578,
+        "Zone_AB_pct": 93.82445903233649
+      },
+      "5h (k=20)": {
+        "MAE": 30.7650203704834,
+        "RMSE": 41.76665115356445,
+        "Zone_AB_pct": 93.7758327255045
+      }
+    },
+    "subgroups": {
+      "T1DM": {
+        "num_sequences": 507,
+        "num_patients": 2,
+        "MAE": 26.98152732849121,
+        "RMSE": 37.29536819458008,
+        "Zone_AB_pct": 89.31952662721893
+      },
+      "T2DM": {
+        "num_sequences": 3606,
+        "num_patients": 15,
+        "MAE": 24.094358444213867,
+        "RMSE": 34.55101013183594,
+        "Zone_AB_pct": 96.11342207432058
+      }
+    },
+    "macro_patient": {
+      "macro_patient_mae_mean": 25.2978759653428,
+      "macro_patient_mae_std": 7.25096042719608,
+      "macro_patient_rmse_mean": 34.41660600550034,
+      "macro_patient_rmse_std": 9.779016820031671
+    },
+    "per_patient": {
+      "1004": {
+        "patient_id": "1004",
+        "diabetes_type": "T1DM",
+        "num_sequences": 201,
+        "MAE": 27.34247398376465,
+        "RMSE": 37.63356399536133
+      },
+      "1007": {
+        "patient_id": "1007",
+        "diabetes_type": "T1DM",
+        "num_sequences": 306,
+        "MAE": 26.74444007873535,
+        "RMSE": 37.07154083251953
+      },
+      "2001": {
+        "patient_id": "2001",
+        "diabetes_type": "T2DM",
+        "num_sequences": 576,
+        "MAE": 21.16514778137207,
+        "RMSE": 28.372793197631836
+      },
+      "2002": {
+        "patient_id": "2002",
+        "diabetes_type": "T2DM",
+        "num_sequences": 114,
+        "MAE": 28.81075668334961,
+        "RMSE": 41.005226135253906
+      },
+      "2020": {
+        "patient_id": "2020",
+        "diabetes_type": "T2DM",
+        "num_sequences": 106,
+        "MAE": 28.09739112854004,
+        "RMSE": 37.91233825683594
+      },
+      "2021": {
+        "patient_id": "2021",
+        "diabetes_type": "T2DM",
+        "num_sequences": 255,
+        "MAE": 34.45328140258789,
+        "RMSE": 48.787567138671875
+      },
+      "2023": {
+        "patient_id": "2023",
+        "diabetes_type": "T2DM",
+        "num_sequences": 108,
+        "MAE": 31.601259231567383,
+        "RMSE": 41.04261016845703
+      },
+      "2029": {
+        "patient_id": "2029",
+        "diabetes_type": "T2DM",
+        "num_sequences": 157,
+        "MAE": 17.66016960144043,
+        "RMSE": 23.957256317138672
+      },
+      "2032": {
+        "patient_id": "2032",
+        "diabetes_type": "T2DM",
+        "num_sequences": 42,
+        "MAE": 29.190895080566406,
+        "RMSE": 38.32468032836914
+      },
+      "2037": {
+        "patient_id": "2037",
+        "diabetes_type": "T2DM",
+        "num_sequences": 306,
+        "MAE": 17.358627319335938,
+        "RMSE": 25.376516342163086
+      },
+      "2052": {
+        "patient_id": "2052",
+        "diabetes_type": "T2DM",
+        "num_sequences": 284,
+        "MAE": 33.10991287231445,
+        "RMSE": 44.438411712646484
+      },
+      "2057": {
+        "patient_id": "2057",
+        "diabetes_type": "T2DM",
+        "num_sequences": 278,
+        "MAE": 28.304088592529297,
+        "RMSE": 39.10861587524414
+      },
+      "2059": {
+        "patient_id": "2059",
+        "diabetes_type": "T2DM",
+        "num_sequences": 286,
+        "MAE": 16.979829788208008,
+        "RMSE": 23.282487869262695
+      },
+      "2063": {
+        "patient_id": "2063",
+        "diabetes_type": "T2DM",
+        "num_sequences": 277,
+        "MAE": 18.505231857299805,
+        "RMSE": 25.358898162841797
+      },
+      "2075": {
+        "patient_id": "2075",
+        "diabetes_type": "T2DM",
+        "num_sequences": 206,
+        "MAE": 19.397689819335938,
+        "RMSE": 24.68821907043457
+      },
+      "2087": {
+        "patient_id": "2087",
+        "diabetes_type": "T2DM",
+        "num_sequences": 306,
+        "MAE": 12.075263023376465,
+        "RMSE": 16.525318145751953
+      },
+      "2095": {
+        "patient_id": "2095",
+        "diabetes_type": "T2DM",
+        "num_sequences": 305,
+        "MAE": 39.267433166503906,
+        "RMSE": 52.196258544921875
+      }
+    }
+  },
+  "test_risk_classification": {
+    "hypo_1h": {
+      "Sensitivity": 0.7040358744394619,
+      "Specificity": 0.9814910025706941,
+      "Precision": 0.6855895196506551,
+      "F1": 0.6946902654867256,
+      "AUROC": 0.9694467820212803,
+      "AUPRC": 0.7796268230784598,
+      "Brier": 0.023475321009755135
+    },
+    "hypo_2h": {
+      "Sensitivity": 0.622895622895623,
+      "Specificity": 0.9808700209643606,
+      "Precision": 0.7170542635658915,
+      "F1": 0.6666666666666667,
+      "AUROC": 0.9434324022898447,
+      "AUPRC": 0.7205919601371302,
+      "Brier": 0.03512340039014816
+    },
+    "hypo_4h": {
+      "Sensitivity": 0.5613207547169812,
+      "Specificity": 0.9655733261046354,
+      "Precision": 0.6520547945205479,
+      "F1": 0.6032953105196451,
+      "AUROC": 0.9003462614504111,
+      "AUPRC": 0.6597952457554751,
+      "Brier": 0.057686302810907364
+    },
+    "hyper_2h": {
+      "Sensitivity": 0.7864661654135339,
+      "Specificity": 0.9245418613007546,
+      "Precision": 0.8328025477707006,
+      "F1": 0.8089713843774168,
+      "AUROC": 0.9407303742648032,
+      "AUPRC": 0.9099554390698287,
+      "Brier": 0.08718313276767731
+    },
+    "hyper_4h": {
+      "Sensitivity": 0.7866894197952219,
+      "Specificity": 0.8687898089171975,
+      "Precision": 0.8173758865248227,
+      "F1": 0.8017391304347826,
+      "AUROC": 0.9217449379119779,
+      "AUPRC": 0.9080605346319237,
+      "Brier": 0.11178495734930038
+    }
+  },
+  "baseline_comparison": {
+    "ridge_test_rmse": 35.8,
+    "neural_test_rmse": 34.901,
+    "rmse_improvement_abs_mg_dl": 0.9,
+    "rmse_improvement_pct": 2.51,
+    "ridge_test_mae": 25.37,
+    "neural_test_mae": 24.4503,
+    "mae_improvement_abs_mg_dl": 0.92,
+    "mae_improvement_pct": 3.63
+  },
+  "search_stages": {
+    "stage3_optimization": {
+      "lr_0.002_wd_0.0001": {
+        "val_rmse": 31.010723114013672,
+        "val_mae": 21.539457321166992,
+        "hypo4h_auprc": 0.8243234087311905
+      },
+      "lr_0.001_wd_0.0001": {
+        "val_rmse": 33.11012649536133,
+        "val_mae": 23.07364273071289,
+        "hypo4h_auprc": 0.8341395337921194
+      },
+      "lr_0.0005_wd_0.0001": {
+        "val_rmse": 34.06769561767578,
+        "val_mae": 24.098230361938477,
+        "hypo4h_auprc": 0.7707791840733837
+      },
+      "lr_0.001_wd_1e-05": {
+        "val_rmse": 33.00898742675781,
+        "val_mae": 23.037927627563477,
+        "hypo4h_auprc": 0.8307614208581547
+      }
+    },
+    "stage4_loss": {
+      "huber_lrisk_5.0": {
+        "val_rmse": 31.010723114013672,
+        "val_mae": 21.539457321166992,
+        "hypo4h_auprc": 0.8243234087311905
+      },
+      "mae_lrisk_5.0": {
+        "val_rmse": 31.63593101501465,
+        "val_mae": 21.64018440246582,
+        "hypo4h_auprc": 0.8282488866976488
+      },
+      "mse_lrisk_5.0": {
+        "val_rmse": 32.20075225830078,
+        "val_mae": 22.727540969848633,
+        "hypo4h_auprc": 0.62449389511861
+      },
+      "huber_lrisk_2.0": {
+        "val_rmse": 31.3091983795166,
+        "val_mae": 21.65471839904785,
+        "hypo4h_auprc": 0.8049901096795168
+      },
+      "huber_lrisk_10.0": {
+        "val_rmse": 31.332780838012695,
+        "val_mae": 21.748445510864258,
+        "hypo4h_auprc": 0.8310846529445577
+      }
+    }
+  },
+  "gpu_reproduction_check": {
+    "gru_base_h64": {
+      "val_rmse": 34.29114532470703,
+      "val_mae": 23.96589469909668,
+      "hypo4h_auprc": 0.737504165381161
+    },
+    "lstm_base_h64": {
+      "val_rmse": 35.382896423339844,
+      "val_mae": 24.73353385925293,
+      "hypo4h_auprc": 0.696500922921032
+    },
+    "gru_h128_l1_d0.2": {
+      "val_rmse": 33.71124267578125,
+      "val_mae": 23.64164924621582,
+      "hypo4h_auprc": 0.7877423277569324
+    },
+    "stage3_lr2e3_wd1e4": {
+      "val_rmse": 31.010723114013672,
+      "val_mae": 21.539457321166992,
+      "hypo4h_auprc": 0.8243234087311905
+    }
+  },
+  "experiment_log": [
+    {
+      "step": 1,
+      "stage": "repro",
+      "name": "gru_base_h64",
+      "val_rmse": 34.29114532470703,
+      "val_mae": 23.96589469909668,
+      "hypo4h_auprc": 0.737504165381161,
+      "train_time": 15.3
+    },
+    {
+      "step": 2,
+      "stage": "repro",
+      "name": "lstm_base_h64",
+      "val_rmse": 35.382896423339844,
+      "val_mae": 24.73353385925293,
+      "hypo4h_auprc": 0.696500922921032,
+      "train_time": 8.7
+    },
+    {
+      "step": 3,
+      "stage": "repro",
+      "name": "gru_h128_l1_d0.2",
+      "val_rmse": 33.71124267578125,
+      "val_mae": 23.64164924621582,
+      "hypo4h_auprc": 0.7877423277569324,
+      "train_time": 8.9
+    },
+    {
+      "step": 4,
+      "stage": "repro",
+      "name": "stage3_lr2e3_wd1e4",
+      "val_rmse": 31.010723114013672,
+      "val_mae": 21.539457321166992,
+      "hypo4h_auprc": 0.8243234087311905,
+      "train_time": 8.9
+    },
+    {
+      "step": 5,
+      "stage": "stage3",
+      "name": "lr_0.001_wd_0.0001",
+      "val_rmse": 33.11012649536133,
+      "val_mae": 23.07364273071289,
+      "hypo4h_auprc": 0.8341395337921194
+    },
+    {
+      "step": 6,
+      "stage": "stage3",
+      "name": "lr_0.0005_wd_0.0001",
+      "val_rmse": 34.06769561767578,
+      "val_mae": 24.098230361938477,
+      "hypo4h_auprc": 0.7707791840733837
+    },
+    {
+      "step": 7,
+      "stage": "stage3",
+      "name": "lr_0.001_wd_1e-05",
+      "val_rmse": 33.00898742675781,
+      "val_mae": 23.037927627563477,
+      "hypo4h_auprc": 0.8307614208581547
+    },
+    {
+      "step": 8,
+      "stage": "stage4",
+      "name": "huber_lrisk_5.0",
+      "val_rmse": 31.010723114013672,
+      "val_mae": 21.539457321166992,
+      "hypo4h_auprc": 0.8243234087311905
+    },
+    {
+      "step": 9,
+      "stage": "stage4",
+      "name": "mae_lrisk_5.0",
+      "val_rmse": 31.63593101501465,
+      "val_mae": 21.64018440246582,
+      "hypo4h_auprc": 0.8282488866976488
+    },
+    {
+      "step": 10,
+      "stage": "stage4",
+      "name": "mse_lrisk_5.0",
+      "val_rmse": 32.20075225830078,
+      "val_mae": 22.727540969848633,
+      "hypo4h_auprc": 0.62449389511861
+    },
+    {
+      "step": 11,
+      "stage": "stage4",
+      "name": "huber_lrisk_2.0",
+      "val_rmse": 31.3091983795166,
+      "val_mae": 21.65471839904785,
+      "hypo4h_auprc": 0.8049901096795168
+    },
+    {
+      "step": 12,
+      "stage": "stage4",
+      "name": "huber_lrisk_10.0",
+      "val_rmse": 31.332780838012695,
+      "val_mae": 21.748445510864258,
+      "hypo4h_auprc": 0.8310846529445577
+    }
+  ]
+}

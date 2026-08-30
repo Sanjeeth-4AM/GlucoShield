@@ -1,0 +1,109 @@
+{
+  "bootstrap_method": "Patient-Level Resampling (N=17 clusters with replacement)",
+  "iterations": 10000,
+  "random_seed": 42,
+  "overall_hybrid": {
+    "MAE": {
+      "point_estimate": 24.143,
+      "ci_95_lower": 20.457,
+      "ci_95_upper": 28.323,
+      "ci_width": 7.866
+    },
+    "RMSE": {
+      "point_estimate": 34.774,
+      "ci_95_lower": 29.425,
+      "ci_95_upper": 40.345,
+      "ci_width": 10.92
+    }
+  },
+  "paired_differences": {
+    "Hybrid_minus_GRU_MAE": {
+      "point_estimate": -0.308,
+      "ci_95_lower": -0.485,
+      "ci_95_upper": -0.125,
+      "ci_width": 0.36
+    },
+    "Hybrid_minus_GRU_RMSE": {
+      "point_estimate": -0.127,
+      "ci_95_lower": -0.358,
+      "ci_95_upper": 0.148,
+      "ci_width": 0.506
+    },
+    "Hybrid_minus_Ridge_MAE": {
+      "point_estimate": -1.231,
+      "ci_95_lower": -1.704,
+      "ci_95_upper": -0.717,
+      "ci_width": 0.987
+    },
+    "Hybrid_minus_Ridge_RMSE": {
+      "point_estimate": -1.024,
+      "ci_95_lower": -1.927,
+      "ci_95_upper": -0.154,
+      "ci_width": 1.772
+    }
+  },
+  "horizon_wise_rmse": {
+    "15m": {
+      "point_estimate": 8.933,
+      "ci_95_lower": 7.799,
+      "ci_95_upper": 10.207,
+      "ci_width": 2.408
+    },
+    "1h": {
+      "point_estimate": 25.596,
+      "ci_95_lower": 21.565,
+      "ci_95_upper": 29.963,
+      "ci_width": 8.398
+    },
+    "2h": {
+      "point_estimate": 35.46,
+      "ci_95_lower": 29.989,
+      "ci_95_upper": 41.094,
+      "ci_width": 11.105
+    },
+    "4h": {
+      "point_estimate": 39.701,
+      "ci_95_lower": 33.515,
+      "ci_95_upper": 46.17,
+      "ci_width": 12.655
+    },
+    "5h": {
+      "point_estimate": 41.89,
+      "ci_95_lower": 35.255,
+      "ci_95_upper": 48.889,
+      "ci_width": 13.634
+    }
+  },
+  "horizon_wise_diff_rmse_vs_gru": {
+    "15m": {
+      "point_estimate": -5.975,
+      "ci_95_lower": -7.903,
+      "ci_95_upper": -4.213,
+      "ci_width": 3.69
+    },
+    "1h": {
+      "point_estimate": -0.098,
+      "ci_95_lower": -0.267,
+      "ci_95_upper": 0.084,
+      "ci_width": 0.351
+    },
+    "2h": {
+      "point_estimate": -0.189,
+      "ci_95_lower": -0.428,
+      "ci_95_upper": 0.069,
+      "ci_width": 0.498
+    },
+    "4h": {
+      "point_estimate": 0.062,
+      "ci_95_lower": -0.239,
+      "ci_95_upper": 0.422,
+      "ci_width": 0.661
+    },
+    "5h": {
+      "point_estimate": 0.123,
+      "ci_95_lower": -0.38,
+      "ci_95_upper": 0.722,
+      "ci_width": 1.102
+    }
+  }
+}

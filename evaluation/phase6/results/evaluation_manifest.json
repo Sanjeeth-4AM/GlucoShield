@@ -1,0 +1,178 @@
+{
+  "audit_name": "GlucoShield Phase 6 Pre-Flight Integrity & Evaluation Manifest",
+  "timestamp": "2026-08-28T15:44:25.338887",
+  "environment": {
+    "python_version": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "pytorch_version": "2.13.0+cu126",
+    "cuda_available": true,
+    "cuda_version": "12.6",
+    "device_name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "numpy_version": "2.5.2",
+    "pandas_version": "3.0.5",
+    "scipy_version": "1.18.1",
+    "sklearn_version": "1.9.0",
+    "matplotlib_version": "3.11.1"
+  },
+  "cohort_summary": {
+    "total_patients": 112,
+    "train_patients": 78,
+    "val_patients": 17,
+    "test_patients": 17,
+    "test_t1dm_patients": 2,
+    "test_t2dm_patients": 15,
+    "total_sequences": 28447,
+    "train_sequences": 19749,
+    "val_sequences": 4585,
+    "test_sequences": 4113
+  },
+  "file_inventory": {
+    "dataset_manifest": {
+      "path": "data/metadata/dataset_manifest.json",
+      "size_bytes": 3839,
+      "sha256": "469a668869cc43841a303bba145986fe35ca68a7506fcbb469a83515877f9c66"
+    },
+    "meta_train": {
+      "path": "data/final/meta_train.csv",
+      "size_bytes": 2496729,
+      "sha256": "156e789c8e3b0e0916db7ee6568efae1a74673c49a6c105dd9235bd54284b726"
+    },
+    "meta_val": {
+      "path": "data/final/meta_val.csv",
+      "size_bytes": 578781,
+      "sha256": "07add1d45edf326408d90a772c6317760bfc39bdc7c5fbac78f5bf75270ae997"
+    },
+    "meta_test": {
+      "path": "data/final/meta_test.csv",
+      "size_bytes": 520552,
+      "sha256": "3aba638d48a858608cc0c0388e6160247bed57de09eafb094c228fb887643655"
+    },
+    "X_test_scaled": {
+      "path": "data/final/X_test_scaled.npy",
+      "size_bytes": 34746752,
+      "sha256": "d4463fbf50de3211aca1616a283e6410e730ead73a0796460a01626083e6b0c7"
+    },
+    "X_test_raw": {
+      "path": "data/final/X_test_raw.npy",
+      "size_bytes": 34746752,
+      "sha256": "2750cff56389f303b23348f0ed429990ef8791c88c3d436f8f4ea3ee75972dd6"
+    },
+    "static_test_scaled": {
+      "path": "data/final/static_test_scaled.npy",
+      "size_bytes": 148196,
+      "sha256": "7eb2675884ab9ac4c1b390b90a9601080b92c4502491e8bda8ba54f2f111ad14"
+    },
+    "static_test_raw": {
+      "path": "data/final/static_test_raw.npy",
+      "size_bytes": 148196,
+      "sha256": "2274f0ef53cd196b27a1707fe436fe4ac1bf0e4f23fbfc17b961e55def437837"
+    },
+    "Y_test_trajectory": {
+      "path": "data/final/Y_test_trajectory.npy",
+      "size_bytes": 329168,
+      "sha256": "7e9785a5f197dd25cbc491110fe61f3d7fbd135cba877527cd2352a204bd02eb"
+    },
+    "Y_test_hypo_1h": {
+      "path": "data/final/Y_test_hypo_1h.npy",
+      "size_bytes": 16580,
+      "sha256": "05d1493f3c34cd642283e836875bf8e02d605fd71cbf979c3960abb138c8c02c"
+    },
+    "Y_test_hypo_2h": {
+      "path": "data/final/Y_test_hypo_2h.npy",
+      "size_bytes": 16580,
+      "sha256": "8b804e1724bfc5fe9f8c393536d9cfeea645349ee6a871650744abf518359927"
+    },
+    "Y_test_hypo_4h": {
+      "path": "data/final/Y_test_hypo_4h.npy",
+      "size_bytes": 16580,
+      "sha256": "c648040273f4c153ab19b79bb36eff4632832d282b762d78f908f11a742afc74"
+    },
+    "Y_test_hyper_2h": {
+      "path": "data/final/Y_test_hyper_2h.npy",
+      "size_bytes": 16580,
+      "sha256": "22fff2be62e6a94bf80e674eb786cb761f8ef7bd2607ec798d89ed155debcb9c"
+    },
+    "Y_test_hyper_4h": {
+      "path": "data/final/Y_test_hyper_4h.npy",
+      "size_bytes": 16580,
+      "sha256": "8213c82214b7d42675c64e890d4d892fac2593f351f02114f40b9874f921263e"
+    },
+    "model_neural_best": {
+      "path": "models/glucoshield_neural_best.pt",
+      "size_bytes": 582600,
+      "sha256": "026af3341a91064136c38b0172f2aa6af34806913640a02270c7d82a28ea13fb"
+    },
+    "model_hybrid_best": {
+      "path": "models/glucoshield_hybrid_best.pt",
+      "size_bytes": 606015,
+      "sha256": "89a67710aa4931246f9097674332cbfd9d1af3d20c722c04d806ef66e47298d1"
+    },
+    "preds_ridge_test": {
+      "path": "results/baselines/preds_classical_ridge_test.npy",
+      "size_bytes": 329168,
+      "sha256": "d745cb4b7b1d31d1b0d2a15cf5fd2006b1bb9315be1cb77dbeb0ec7f065bf946"
+    },
+    "preds_linear_trend_test": {
+      "path": "results/baselines/preds_linear_trend_test.npy",
+      "size_bytes": 329168,
+      "sha256": "b8d59a75ef4b73d1f5c48096d164c654dd0141e6198b3f04589e86a45c2b3cc8"
+    },
+    "preds_persistence_test": {
+      "path": "results/baselines/preds_persistence_test.npy",
+      "size_bytes": 329168,
+      "sha256": "d412b9c6b2d99c200cb27054431d128d576f2ebd3a4867001cd2c082779ca63c"
+    },
+    "preds_neural_test": {
+      "path": "results/neural/preds_best_neural_test.npy",
+      "size_bytes": 329168,
+      "sha256": "ada4195d4407c0c36562ed722f798740eae11f99c7680b6cda056611ddf79e80"
+    },
+    "probs_neural_risk_test": {
+      "path": "results/neural/probs_best_neural_test.npy",
+      "size_bytes": 82388,
+      "sha256": "7e43d7c9c0145c4dd47bae91a71a16234ea9aa203bf4d4c060738346d2401358"
+    },
+    "preds_ode_standalone_test": {
+      "path": "results/digital_twin/preds_ode_standalone_test.npy",
+      "size_bytes": 329168,
+      "sha256": "1e565dbdb14b96f07db5a562d98e72131c4585cb265162b28efcf734154259aa"
+    },
+    "preds_hybrid_test": {
+      "path": "results/digital_twin/preds_hybrid_test.npy",
+      "size_bytes": 329168,
+      "sha256": "ffe4373c448f0636620f4f9b1c2760905df0ebc01121f3e241f4280333fb064b"
+    },
+    "probs_hybrid_risk_test": {
+      "path": "results/digital_twin/probs_risk_hybrid_test.npy",
+      "size_bytes": 82388,
+      "sha256": "c1c8b7b60851cda51c770bfc511d937f3aa296a8bd1a026a5060d345a75e43ea"
+    }
+  },
+  "verified_test_metrics": {
+    "preds_ridge_test": {
+      "MAE": 25.374,
+      "RMSE": 35.7989
+    },
+    "preds_linear_trend_test": {
+      "MAE": 55.7621,
+      "RMSE": 81.3915
+    },
+    "preds_persistence_test": {
+      "MAE": 34.1374,
+      "RMSE": 49.0147
+    },
+    "preds_neural_test": {
+      "MAE": 24.4503,
+      "RMSE": 34.901
+    },
+    "preds_ode_standalone_test": {
+      "MAE": 40.6101,
+      "RMSE": 52.6668
+    },
+    "preds_hybrid_test": {
+      "MAE": 24.1427,
+      "RMSE": 34.7744
+    }
+  }
+}
