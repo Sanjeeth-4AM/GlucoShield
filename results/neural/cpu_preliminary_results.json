@@ -1,0 +1,66 @@
+{
+  "execution_note": "PRELIMINARY CPU-ONLY RESULTS — training was stopped before completion because GPU (RTX 4050) was not being utilized. These results are from torch 2.13.0+cpu running on Intel CPU with 16 threads.",
+  "hardware": "CPU-only (torch 2.13.0+cpu, 16 threads)",
+  "stopped_at": "2026-08-23T15:17:20+05:30",
+  "status": "INCOMPLETE — Stopped mid-Stage-3 to fix GPU",
+
+  "stage1_architecture_comparison": {
+    "winner": "GRU",
+    "gru_baseline": {
+      "config": {"cell_type": "gru", "hidden": 64, "layers": 1, "dropout": 0.2, "lr": 1e-3},
+      "best_val_rmse": 34.44,
+      "best_val_mae": 24.20,
+      "hypo4h_auprc": 0.693,
+      "hypo4h_sensitivity": 0.651,
+      "epochs": 8,
+      "best_epoch": 7
+    },
+    "lstm_baseline": {
+      "config": {"cell_type": "lstm", "hidden": 64, "layers": 1, "dropout": 0.2, "lr": 1e-3},
+      "best_val_rmse": 35.57,
+      "best_val_mae": 24.86,
+      "hypo4h_auprc": 0.670,
+      "hypo4h_sensitivity": 0.575,
+      "epochs": 8,
+      "best_epoch": 8
+    }
+  },
+
+  "stage2_capacity_tuning": {
+    "winner": "h128_l1_d0.2",
+    "winner_config": {"hidden": 128, "layers": 1, "dropout": 0.2},
+    "all_results": {
+      "h64_l1_d0.2":  {"val_rmse": 34.44, "val_mae": 24.20, "hypo4h_auprc": 0.693},
+      "h96_l1_d0.2":  {"val_rmse": 33.84, "val_mae": 23.70, "hypo4h_auprc": 0.775},
+      "h128_l1_d0.2": {"val_rmse": 33.28, "val_mae": 23.05, "hypo4h_auprc": 0.801},
+      "h64_l2_d0.2":  {"val_rmse": 34.62, "val_mae": 24.24, "hypo4h_auprc": 0.746},
+      "h96_l1_d0.1":  {"val_rmse": 33.29, "val_mae": 23.20, "hypo4h_auprc": 0.783},
+      "h96_l1_d0.3":  {"val_rmse": 34.15, "val_mae": 23.89, "hypo4h_auprc": 0.773}
+    },
+    "status": "COMPLETE"
+  },
+
+  "stage3_optimization_tuning": {
+    "status": "INCOMPLETE — 1 of 4 configs completed before stop",
+    "completed_results": {
+      "lr_0.002_wd_0.0001": {"val_rmse": 31.45, "val_mae": 21.69, "hypo4h_auprc": 0.831}
+    },
+    "remaining_configs": [
+      {"lr": 1e-3, "wd": 1e-4},
+      {"lr": 5e-4, "wd": 1e-4},
+      {"lr": 1e-3, "wd": 1e-5}
+    ]
+  },
+
+  "stage4_loss_tuning": {"status": "NOT_STARTED"},
+  "stage5_meal_transform": {"status": "NOT_STARTED"},
+  "ablation_study": {"status": "NOT_STARTED"},
+  "test_evaluation": {"status": "NOT_STARTED"},
+
+  "key_findings_so_far": {
+    "architecture": "GRU clearly superior to LSTM on this dataset (34.44 vs 35.57 RMSE)",
+    "capacity": "Wider single-layer beats deeper multi-layer (h128_l1 > h64_l2)",
+    "lr_hint": "lr=2e-3 with wd=1e-4 dropped RMSE to 31.45 — significant improvement over 1e-3",
+    "all_beat_ridge_baseline": "All GRU configs beat Ridge baseline (35.80 RMSE) on validation"
+  }
+}

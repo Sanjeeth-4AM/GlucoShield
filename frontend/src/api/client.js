@@ -4,6 +4,15 @@
 
 const API_BASE = ""; // Relative path relies on Vite proxy or same-origin FastAPI host
 
+function getAuthHeaders() {
+  const token = localStorage.getItem("glucoshield_token");
+  const headers = { "Content-Type": "application/json" };
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+  return headers;
+}
+
 export async function fetchHealth() {
   try {
     const res = await fetch(`${API_BASE}/api/v1/health`);
@@ -20,7 +29,7 @@ export async function fetchHealth() {
 export async function fetchForecast(payload) {
   const res = await fetch(`${API_BASE}/api/v1/forecast`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: getAuthHeaders(),
     body: JSON.stringify(payload)
   });
 
@@ -35,7 +44,7 @@ export async function fetchForecast(payload) {
 export async function fetchWhatIf(payload) {
   const res = await fetch(`${API_BASE}/api/v1/what-if`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: getAuthHeaders(),
     body: JSON.stringify(payload)
   });
 
@@ -50,7 +59,7 @@ export async function fetchWhatIf(payload) {
 export async function fetchFoodAnalyze(payload) {
   const res = await fetch(`${API_BASE}/api/v1/food/analyze`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: getAuthHeaders(),
     body: JSON.stringify(payload)
   });
 
@@ -65,7 +74,7 @@ export async function fetchFoodAnalyze(payload) {
 export async function fetchFullFlow(payload) {
   const res = await fetch(`${API_BASE}/api/v1/decision/full-flow`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: getAuthHeaders(),
     body: JSON.stringify(payload)
   });
 
@@ -75,4 +84,30 @@ export async function fetchFullFlow(payload) {
   }
 
   return await res.json();
+}
+
+export async function fetchCohortDemoPatients() {
+  try {
+    const res = await fetch(`${API_BASE}/api/v1/cohort/demo-patients`);
+    if (!res.ok) {
+      throw new Error(`Demo patients request failed (${res.status})`);
+    }
+    return await res.json();
+  } catch (err) {
+    console.warn("[API Client] fetchCohortDemoPatients failed:", err.message);
+    return null;
+  }
+}
+
+export async function fetchCohortComparison() {
+  try {
+    const res = await fetch(`${API_BASE}/api/v1/cohort/comparison`);
+    if (!res.ok) {
+      throw new Error(`Cohort comparison request failed (${res.status})`);
+    }
+    return await res.json();
+  } catch (err) {
+    console.warn("[API Client] fetchCohortComparison failed:", err.message);
+    return null;
+  }
 }

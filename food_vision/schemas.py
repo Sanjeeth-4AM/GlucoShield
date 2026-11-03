@@ -12,19 +12,20 @@ from typing import List, Optional, Dict, Any
 
 @dataclass
 class FoodCandidate:
-    """A candidate food item recognized from an image."""
+    """A candidate food item recognized from an image or provided via text query."""
     name: str
-    confidence: float
-    source: str
+    confidence: Optional[float] = None
+    source: str = "manual_user_entry"
     raw_label: Optional[str] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return {
             "name": self.name,
-            "confidence": round(float(self.confidence), 4),
+            "confidence": round(float(self.confidence), 4) if self.confidence is not None else None,
             "source": self.source,
             "raw_label": self.raw_label
         }
+
 
 
 @dataclass

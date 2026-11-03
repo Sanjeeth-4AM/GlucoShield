@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you utilize GlucoShield in academic research, educational material, or clinical decision-support studies, please cite it as below."
+title: "GlucoShield: Physics-Informed Neural-ODE Glucose Forecasting & Automated Meal-Aware Clinical Decision-Support Platform"
+authors:
+  - family-names: "Sanjeeth"
+    given-names: "Sai D."
+    orcid: "https://orcid.org/0009-0000-0000-0000"
+repository-code: "https://github.com/Sanjeeth-4AM/GlucoShield"
+url: "https://github.com/Sanjeeth-4AM/GlucoShield"
+abstract: >-
+  GlucoShield is a research-grade hybrid glucose forecasting and clinical decision-support
+  architecture combining a multi-task gated recurrent unit (GRU-128) with an 8-compartment
+  nonlinear Hovorka ordinary differential equation (ODE) digital twin solved via Runge-Kutta 4.
+  The certified production serving engine (Combination C) unifies point forecast trajectories
+  from a frozen deep neural model with calibrated regime-conditioned prediction intervals,
+  achieving 95.28% Clarke Error Grid Zone A+B clinical accuracy and 96.39% empirical prediction
+  interval coverage on external validation cohorts.
+keywords:
+  - continuous-glucose-monitoring
+  - physics-informed-neural-networks
+  - neural-ode
+  - diabetes-technology
+  - multi-horizon-forecasting
+  - digital-twin
+  - clinical-decision-support
+  - time-series
+version: "1.0.0"
+date-released: "2026-11-03"
+license: "Apache-2.0"

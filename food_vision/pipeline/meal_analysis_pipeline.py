@@ -10,6 +10,7 @@ from food_vision.schemas import FoodCandidate, NutritionResult, MealAnalysisResu
 from food_vision.providers.base import BaseFoodRecognitionProvider, BaseNutritionProvider
 from food_vision.providers.usda_nutrition_provider import USDANutritionProvider
 from food_vision.providers.huggingface_food_provider import HuggingFaceFoodRecognitionProvider
+from food_vision.providers.local_food_provider import LocalFoodRecognitionProvider
 from food_vision.pipeline.confidence_policy import evaluate_meal_confidence
 
 class MealAnalysisPipeline:
@@ -21,7 +22,16 @@ class MealAnalysisPipeline:
         recognition_provider: Optional[BaseFoodRecognitionProvider] = None,
         nutrition_provider: Optional[BaseNutritionProvider] = None
     ):
-        self.recognition_provider = recognition_provider or HuggingFaceFoodRecognitionProvider()
+        if recognition_provider is not None:
+            self.recognition_provider = recognition_provider
+            self._custom_recognition_provider = True
+        else:
+            self._custom_recognition_provider = False
+            local_prov = LocalFoodRecognitionProvider()
+            if local_prov.is_available:
+                self.recognition_provider = local_prov
+            else:
+                self.recognition_provider = HuggingFaceFoodRecognitionProvider()
         self.nutrition_provider = nutrition_provider or USDANutritionProvider()
 
     def analyze_image(
@@ -42,7 +52,14 @@ class MealAnalysisPipeline:
         valid_portion = max(0.0, float(portion_g))
 
         # Stage 1: Recognize Food Candidates
+        if not getattr(self, "_custom_recognition_provider", False):
+            if not isinstance(self.recognition_provider, LocalFoodRecognitionProvider) or not getattr(self.recognition_provider, "is_available", False):
+                local_prov = LocalFoodRecognitionProvider()
+                if local_prov.is_available:
+                    self.recognition_provider = local_prov
+
         candidates = self.recognition_provider.recognize_food(image_input, top_k=5)
+        recognition_error = getattr(self.recognition_provider, "last_error", None)
 
         selected_food_name = None
         nutrition_res = None
@@ -58,7 +75,12 @@ class MealAnalysisPipeline:
         final_macros = self._calculate_final_macros(nutrition_res, valid_portion)
 
         # Stage 4: Apply Safety & Confidence Policy
-        requires_confirm, warnings = evaluate_meal_confidence(candidates, nutrition_res, valid_portion)
+        requires_confirm, warnings = evaluate_meal_confidence(
+            candidates,
+            nutrition_res,
+            valid_portion,
+            recognition_error=recognition_error
+        )
 
         return MealAnalysisResult(
             image_food_candidates=candidates,
@@ -84,7 +106,7 @@ class MealAnalysisPipeline:
 
         synthetic_candidate = FoodCandidate(
             name=food_name,
-            confidence=1.0,
+            confidence=None,
             source="manual_user_entry",
             raw_label=food_name
         )

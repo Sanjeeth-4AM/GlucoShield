@@ -1,0 +1,23 @@
+{
+  "status": "LOCKED_FROM_CALIBRATION_ONLY",
+  "selection_rule": "Filter to ceiling <= 0.40, cov95 >= 95.0%, cov80 >= 85.0%, then lowest RMSE on Calibration partition (11,497 windows)",
+  "selected_parameters": {
+    "ceiling": 0.4,
+    "d_mid": 35.0,
+    "tau": 8.0,
+    "w_high": 0.25
+  },
+  "calibration_metrics": {
+    "ceiling": 0.4,
+    "d_mid": 35.0,
+    "tau": 8.0,
+    "w_high": 0.25,
+    "rmse": 45.348602294921875,
+    "mae": 33.19639587402344,
+    "bias": -8.215367317199707,
+    "cov95": 95.86109419848657,
+    "cov80": 87.34626424284596,
+    "mean_physics_weight": 32.298895716667175,
+    "rmse_gain": 1.6400871276855469
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "status": "FROZEN_CALIBRATION_SELECTED",
+  "selected_configuration": "E1_SI_eta0.04_b0.7",
+  "parameters": {
+    "adapt_si": true,
+    "adapt_gb": false,
+    "eta_si": 0.04,
+    "eta_gb": 0.0,
+    "beta": 0.7,
+    "clip_si": 0.1,
+    "clip_gb": 5.0,
+    "deadband": 3.0,
+    "fasting_gb_only": false
+  },
+  "calibration_metrics": {
+    "rmse": 45.27652359008789,
+    "rmse_gain": 0.07207870483398438,
+    "mae": 33.21437454223633,
+    "ode_rmse": 50.3946533203125,
+    "ode_gain": 0.9858627319335938,
+    "cov95": 95.94937809863443,
+    "cov80": 87.36409498129947,
+    "mean_disagreement": 39.78384017944336
+  }
+}

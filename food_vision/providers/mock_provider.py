@@ -17,6 +17,7 @@ class MockFoodRecognitionProvider(BaseFoodRecognitionProvider):
         available: bool = True
     ):
         self._available = available
+        self.last_error: Optional[str] = None
         self._canned = canned_candidates or [
             FoodCandidate(name="samosa", confidence=0.88, source="mock_vision", raw_label="indian_samosa_pastry"),
             FoodCandidate(name="spring_roll", confidence=0.08, source="mock_vision", raw_label="fried_spring_roll"),
@@ -36,7 +37,9 @@ class MockFoodRecognitionProvider(BaseFoodRecognitionProvider):
         image_input: Union[str, bytes],
         top_k: int = 5
     ) -> List[FoodCandidate]:
+        self.last_error = None
         if not self._available:
+            self.last_error = "Mock recognition service is unavailable"
             return []
         return self._canned[:top_k]
 

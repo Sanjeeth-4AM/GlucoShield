@@ -1,45 +1,140 @@
-# Environments & Secrets
+# ==============================================================================
+# GlucoShield Professional .gitignore
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Environment Variables, Local Credentials & Secrets
+# ------------------------------------------------------------------------------
 .env
 *.env
 .env.local
+.env.*.local
+!*.example
+!*.template
 
-# Python
+# ------------------------------------------------------------------------------
+# 2. Python Environments, Caches & Bytecode
+# ------------------------------------------------------------------------------
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 .pytest_cache/
 .coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
 
-# Large Vision Cache
-food_vision/data/
-food_vision/checkpoints/*.tmp
+# ------------------------------------------------------------------------------
+# 3. Node.js & Frontend Artifacts
+# ------------------------------------------------------------------------------
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.vite/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Restricted Raw Telemetry Data (OhioT1DM, D1NAMO, & Glucdict Raw Archives)
-data/raw/OhioT1DM/
-data/raw/D1NAMO/
-data/raw/Glucdict/
-data/raw/*.tgz
-data/raw/*.tar.gz
-data/raw/*.zip
-data/raw/*.xml
-data/raw/*.csv
-!data/raw/.gitkeep
+# ------------------------------------------------------------------------------
+# 4. Local Relational Databases & SQLite Locks
+# ------------------------------------------------------------------------------
+glucoshield.db
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
 
-# IDE / System
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-
-
-# Local datasets and generated artifacts
-data/
+# ------------------------------------------------------------------------------
+# 5. Raw & Processed Clinical / Research Datasets (Strict Privacy Protection)
+# ------------------------------------------------------------------------------
+data/*
+!data/metadata/
+!data/processed/
+data/processed/*
+!data/processed/demo_cohort_patients.json
+clean_output/
 extracted/
 archive/
-clean_output/
-results/
+OhioT1DM_2018/
+validation_data/
+
+# ------------------------------------------------------------------------------
+# 6. Large Pretrained Model Binaries (> 100MB External Weights)
+# ------------------------------------------------------------------------------
+models/food101/pytorch_model.bin
+models/food101/.cache/
+
+# ------------------------------------------------------------------------------
+# 7. Temporary Archives, Zip Bundles & Personal Documents
+# ------------------------------------------------------------------------------
+*.zip
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+*.docx
+*.pptx
+*.xlsx
+
+# ------------------------------------------------------------------------------
+# 8. Scratch Directories, Browser Profiles & UI Artifacts
+# ------------------------------------------------------------------------------
+scratch/*
+!scratch/phase13_disagreement_gate/
+!scratch/phase13_disagreement_gate/frozen_gate_config.json
+!scratch/phase13_disagreement_gate/disagreement_gate.py
+!scratch/phase13_patient_specific_ode/
+!scratch/phase13_patient_specific_ode/ode_adaptation_config.json
+!scratch/phase13_patient_specific_ode/patient_ode_adapter.py
+GlucoShield/
+stitch_export/
+stitch_glucoshield_final/
+chrome_*
+REPORT_EVIDENCE/
+REPORT_EVIDENCE.zip
+academic_report_evidence/
+
+# Temporary activity telemetry fold checkpoints & experimental figures
 activity_telemetry/experiments/checkpoints/
 activity_telemetry/experiments/results/
 activity_telemetry/validation/figures/
 activity_telemetry/validation/results/
+
+# ------------------------------------------------------------------------------
+# 9. Logs & Runtime Telemetry
+# ------------------------------------------------------------------------------
+*.log
+*.log.*
+
+# ------------------------------------------------------------------------------
+# 10. IDE & Operating System Artifacts
+# ------------------------------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

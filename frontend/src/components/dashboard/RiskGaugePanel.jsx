@@ -1,114 +1,143 @@
 import React from "react";
-import { AlertTriangle, ShieldCheck, TrendingDown, TrendingUp, AlertCircle } from "lucide-react";
-import { ALERT_LEVELS } from "../../api/types.js";
+import { Info } from "lucide-react";
 
 export function RiskGaugePanel({ riskAssessment }) {
-  const alertLevel = riskAssessment?.alert_level || "NORMAL";
-  const hypoProb1h = (riskAssessment?.hypo_probability_1h ?? 0.04) * 100;
-  const hypoProb2h = (riskAssessment?.hypo_probability_2h ?? 0.08) * 100;
-  const hypoProb4h = (riskAssessment?.hypo_probability_4h ?? 0.12) * 100;
+  // Support certified Combination C risk schema and legacy fallbacks
+  const rawHypo = riskAssessment?.hypo_2h_prob ?? riskAssessment?.hypo_risk ?? null;
+  const rawHyper = riskAssessment?.hyper_2h_prob ?? riskAssessment?.hyper_risk ?? null;
 
-  const hyperProb2h = (riskAssessment?.hyper_probability_2h ?? 0.15) * 100;
-  const hyperProb4h = (riskAssessment?.hyper_probability_4h ?? 0.22) * 100;
+  const peak = (riskAssessment?.peak_mg_dl ?? riskAssessment?.projected_peak_mg_dl) != null
+    ? Math.round(riskAssessment.peak_mg_dl ?? riskAssessment.projected_peak_mg_dl)
+    : null;
+  const peakTime = riskAssessment?.time_to_peak_min ?? riskAssessment?.projected_peak_time_minutes ?? null;
+  const nadir = (riskAssessment?.nadir_mg_dl ?? riskAssessment?.projected_nadir_mg_dl) != null
+    ? Math.round(riskAssessment.nadir_mg_dl ?? riskAssessment.projected_nadir_mg_dl)
+    : null;
 
-  const nadir = riskAssessment?.projected_nadir_mg_dl ?? 95.0;
-  const nadirTime = riskAssessment?.projected_nadir_time_minutes ?? 120;
-  const peak = riskAssessment?.projected_peak_mg_dl ?? 142.0;
-  const peakTime = riskAssessment?.projected_peak_time_minutes ?? 45;
+  // Hypoglycemia metrics
+  const hypoPct = rawHypo !== null ? Math.round(Math.min(100, Math.max(0, rawHypo * 100))) : null;
+  const hypoLabel = hypoPct === null
+    ? "Unavailable"
+    : riskAssessment?.hypo_risk_level || (hypoPct < 20 ? "Low Risk" : hypoPct < 50 ? "Moderate Risk" : "High Risk");
+  const hypoDesc = hypoPct === null
+    ? "Risk metric unavailable"
+    : nadir ? `Projected nadir: ~${nadir} mg/dL` : "Minimal descent trajectory expected";
 
-  const alertConfig = ALERT_LEVELS[alertLevel] || ALERT_LEVELS.NORMAL;
+  // Hyperglycemia metrics
+  const hyperPct = rawHyper !== null ? Math.round(Math.min(100, Math.max(0, rawHyper * 100))) : null;
+  const hyperLabel = hyperPct === null
+    ? "Unavailable"
+    : riskAssessment?.hyper_risk_level || (hyperPct < 25 ? "Low Risk" : hyperPct < 60 ? "Moderate Risk" : "Elevated Risk");
+  const hyperDesc = hyperPct === null
+    ? "Risk metric unavailable"
+    : peak ? `Projected peak: ${peakTime ? `+${Math.floor(peakTime / 60)}h ${peakTime % 60}m ` : ""}(~${peak} mg/dL)` : "Projected excursion within standard bounds";
+
+  const observationText = riskAssessment?.physiological_observation ||
+    (peak && peak <= 180
+      ? `Projected peak within target range (~${peak} mg/dL) based on recorded meal and active pharmacodynamic insulin.`
+      : peak && peak > 180
+      ? `Transient postprandial peak projected near ~${peak} mg/dL before insulin clearance restores target range.`
+      : rawHypo !== null
+      ? "Nominal metabolic equilibrium maintained across 5-hour forward projection horizon."
+      : "Risk projection pending forecast generation.");
 
   return (
-    <div className="glass-panel instrument-border rounded-xl p-5 space-y-4">
-      {/* Header with Risk Pill */}
-      <div className="flex justify-between items-center">
-        <span className="font-mono text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 text-[#00daf3]" />
-          Multi-Horizon Clinical Risk Evaluation
-        </span>
-        <span className={`font-mono text-[10px] px-2.5 py-0.5 rounded-full uppercase font-bold border ${
-          alertLevel === "CRITICAL"
-            ? "bg-[#ef4444]/20 text-[#ef4444] border-[#ef4444]/40"
-            : alertLevel === "WARNING"
-            ? "bg-[#f9bd22]/20 text-[#f9bd22] border-[#f9bd22]/40"
-            : "bg-[#2dd4bf]/20 text-[#2dd4bf] border-[#2dd4bf]/40"
-        }`}>
-          {alertLevel} RISK STATUS
-        </span>
+    <div className="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between border border-surface-container h-full">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-space-xs">
+          <span className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">
+            SECTION C
+          </span>
+          <span className="text-outline-variant">•</span>
+          <h2 className="font-label-md text-label-md font-semibold text-on-surface">
+            METABOLIC RISK PROJECTION
+          </h2>
+        </div>
+        <span className="font-code-sm text-code-sm text-outline">Trajectory: +5h • Acute Risk: +2h</span>
       </div>
 
-      {/* 2-Column Risk Indicators: Hypo Left, Hyper Right */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Hypoglycemia Risk */}
-        <div className="p-3.5 rounded-lg bg-[#070d1f]/70 border border-white/10 space-y-3">
-          <div className="flex justify-between items-center">
-            <span className="font-mono text-[11px] text-[#00daf3] font-bold flex items-center gap-1.5">
-              <TrendingDown className="w-3.5 h-3.5 text-[#00daf3]" />
-              Hypoglycemia Risk (&lt; 70 mg/dL)
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-space-md my-space-sm">
+        {/* Hypoglycemia Card */}
+        <div className="bg-surface-container-low p-space-sm rounded border border-surface-container">
+          <div className="flex items-center justify-between mb-1">
+            <span className="font-label-sm text-label-sm text-on-surface-variant font-medium">
+              Hypoglycemia Risk (2h acute, &lt;70 mg/dL)
             </span>
-            <span className="font-mono text-xs text-white font-bold">{Math.round(hypoProb1h)}% (1h)</span>
+            <span
+              className={`font-code-sm text-code-sm font-bold ${
+                hypoPct === null
+                  ? "text-on-surface-variant"
+                  : hypoPct > 50
+                  ? "text-error"
+                  : "text-tertiary"
+              }`}
+            >
+              {hypoLabel} {hypoPct !== null && `(${hypoPct}%)`}
+            </span>
           </div>
-
-          <div className="space-y-1.5 font-mono text-[10px] text-[#bac9cc]">
-            <div>
-              <div className="flex justify-between mb-0.5"><span>1-Hour:</span><span>{Math.round(hypoProb1h)}%</span></div>
-              <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                <div className="h-full bg-[#00daf3]" style={{ width: `${Math.min(100, hypoProb1h)}%` }}></div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex justify-between mb-0.5"><span>2-Hour:</span><span>{Math.round(hypoProb2h)}%</span></div>
-              <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                <div className="h-full bg-[#00daf3]" style={{ width: `${Math.min(100, hypoProb2h)}%` }}></div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex justify-between mb-0.5"><span>4-Hour:</span><span>{Math.round(hypoProb4h)}%</span></div>
-              <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                <div className="h-full bg-[#00daf3]" style={{ width: `${Math.min(100, hypoProb4h)}%` }}></div>
-              </div>
-            </div>
+          <div className="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+            <div
+              className={`h-full rounded-full transition-all duration-500 ${
+                hypoPct === null ? "bg-transparent" : hypoPct > 50 ? "bg-error" : "bg-tertiary"
+              }`}
+              style={{ width: `${hypoPct !== null ? Math.max(5, hypoPct) : 0}%` }}
+            />
           </div>
-
-          <div className="pt-2 border-t border-white/10 flex justify-between items-center font-mono text-[10px]">
-            <span className="text-[#bac9cc]">Projected Nadir:</span>
-            <span className="text-white font-bold">{Math.round(nadir)} mg/dL @ +{nadirTime}m</span>
-          </div>
+          <span className="font-body-sm text-body-sm text-on-surface-variant mt-1.5 block">
+            {hypoDesc}
+          </span>
         </div>
 
-        {/* Hyperglycemia Risk */}
-        <div className="p-3.5 rounded-lg bg-[#070d1f]/70 border border-white/10 space-y-3">
-          <div className="flex justify-between items-center">
-            <span className="font-mono text-[11px] text-[#f9bd22] font-bold flex items-center gap-1.5">
-              <TrendingUp className="w-3.5 h-3.5 text-[#f9bd22]" />
-              Hyperglycemia Risk (&gt; 180 mg/dL)
+        {/* Hyperglycemia Card */}
+        <div className="bg-surface-container-low p-space-sm rounded border border-surface-container">
+          <div className="flex items-center justify-between mb-1">
+            <span className="font-label-sm text-label-sm text-on-surface-variant font-medium">
+              Hyperglycemia Risk (2h acute, &gt;180 mg/dL)
             </span>
-            <span className="font-mono text-xs text-white font-bold">{Math.round(hyperProb2h)}% (2h)</span>
+            <span
+              className={`font-code-sm text-code-sm font-bold ${
+                hyperPct === null
+                  ? "text-on-surface-variant"
+                  : hyperPct > 60
+                  ? "text-error"
+                  : "text-secondary"
+              }`}
+            >
+              {hyperLabel} {hyperPct !== null && `(${hyperPct}%)`}
+            </span>
           </div>
-
-          <div className="space-y-1.5 font-mono text-[10px] text-[#bac9cc]">
-            <div>
-              <div className="flex justify-between mb-0.5"><span>2-Hour:</span><span>{Math.round(hyperProb2h)}%</span></div>
-              <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                <div className="h-full bg-[#f9bd22]" style={{ width: `${Math.min(100, hyperProb2h)}%` }}></div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex justify-between mb-0.5"><span>4-Hour:</span><span>{Math.round(hyperProb4h)}%</span></div>
-              <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                <div className="h-full bg-[#f9bd22]" style={{ width: `${Math.min(100, hyperProb4h)}%` }}></div>
-              </div>
-            </div>
+          <div className="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+            <div
+              className={`h-full rounded-full transition-all duration-500 ${
+                hyperPct === null ? "bg-transparent" : hyperPct > 60 ? "bg-error" : "bg-secondary-container"
+              }`}
+              style={{ width: `${hyperPct !== null ? Math.max(5, hyperPct) : 0}%` }}
+            />
           </div>
-
-          <div className="pt-2 border-t border-white/10 flex justify-between items-center font-mono text-[10px]">
-            <span className="text-[#bac9cc]">Projected Peak:</span>
-            <span className="text-white font-bold">{Math.round(peak)} mg/dL @ +{peakTime}m</span>
-          </div>
+          <span className="font-body-sm text-body-sm text-on-surface-variant mt-1.5 block">
+            {hyperDesc}
+          </span>
         </div>
+      </div>
+
+      {/* Active Clinical / Uncertainty Alerts */}
+      {Array.isArray(riskAssessment?.active_alerts) && riskAssessment.active_alerts.length > 0 && (
+        <div className="mb-space-xs p-2 rounded bg-amber-500/10 border border-amber-500/30 flex flex-col gap-1">
+          {riskAssessment.active_alerts.map((alert, idx) => (
+            <div key={idx} className="flex items-center gap-1.5 text-[11px] font-mono text-amber-700 dark:text-amber-400 font-semibold">
+              <span className="text-xs">⚠️</span>
+              <span>{alert}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Observation Box */}
+      <div className="flex items-start gap-space-xs p-space-xs bg-surface-container-high/60 rounded border border-surface-container mt-auto">
+        <Info className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+        <p className="font-body-sm text-body-sm text-on-surface">
+          <strong className="font-medium text-on-surface">Physiological Observation:</strong> {observationText}
+        </p>
       </div>
     </div>
   );

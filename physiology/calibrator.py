@@ -52,43 +52,50 @@ class MovingHorizonCalibrator(nn.Module):
           diagnostics: Dict containing calibration loss, runtime (ms), etc.
         """
         t0_time = time.time()
-        device = history_sequences.device
+        orig_device = history_sequences.device
         batch_size = history_sequences.shape[0]
 
-        # Extract past 24h channels
-        past_cgm = history_sequences[:, :, 0]       # (batch, 96) [mg/dL]
-        past_insulin = history_sequences[:, :, 15]   # (batch, 96) [Units per 15 min]
-        past_carbs = history_sequences[:, :, 17]     # (batch, 96) [grams per 15 min]
+        # Device-placement optimization: Pin MHE ODE optimization loop to CPU
+        # to eliminate thousands of small sequential CUDA micro-kernel launch latencies
+        # while keeping 100% mathematical and physiological exactness.
+        cpu_device = torch.device("cpu")
+        history_sequences_cpu = history_sequences.to(cpu_device)
+        prior_params_cpu = prior_params.to(cpu_device)
+
+        # Extract past 24h channels on CPU
+        past_cgm = history_sequences_cpu[:, :, 0]       # (batch, 96) [mg/dL]
+        past_insulin = history_sequences_cpu[:, :, 15]   # (batch, 96) [Units per 15 min]
+        past_carbs = history_sequences_cpu[:, :, 17]     # (batch, 96) [grams per 15 min]
         
-        # Initial state at t = -96 (24 hours ago)
+        # Initial state at t = -96 (24 hours ago) on CPU
         # Initialize from the first observed CGM value 24 hours ago
         init_state_t_minus_96 = MetabolicState.create_initial_state(
             initial_glucose=past_cgm[:, 0],
-            device=device
+            device=cpu_device
         )
 
         # Detach prior parameters to prevent graph contamination
         prior_p = PhysiologicalParameters(
-            S_I=prior_params.S_I.detach().clone(),
-            S_G=prior_params.S_G.detach().clone(),
-            p2=prior_params.p2.detach().clone(),
-            tau_s=prior_params.tau_s.detach().clone(),
-            k_empt=prior_params.k_empt.detach().clone(),
-            k_abs=prior_params.k_abs.detach().clone(),
-            tau_d=prior_params.tau_d.detach().clone(),
-            G_b=prior_params.G_b.detach().clone(),
-            V_g=prior_params.V_g.detach().clone(),
-            BW=prior_params.BW.detach().clone(),
-            V_I=prior_params.V_I.detach().clone(),
-            k_e=prior_params.k_e.detach().clone(),
-            bioavailability=prior_params.bioavailability.detach().clone(),
-            beta_cell=prior_params.beta_cell.detach().clone()
+            S_I=prior_params_cpu.S_I.detach().clone(),
+            S_G=prior_params_cpu.S_G.detach().clone(),
+            p2=prior_params_cpu.p2.detach().clone(),
+            tau_s=prior_params_cpu.tau_s.detach().clone(),
+            k_empt=prior_params_cpu.k_empt.detach().clone(),
+            k_abs=prior_params_cpu.k_abs.detach().clone(),
+            tau_d=prior_params_cpu.tau_d.detach().clone(),
+            G_b=prior_params_cpu.G_b.detach().clone(),
+            V_g=prior_params_cpu.V_g.detach().clone(),
+            BW=prior_params_cpu.BW.detach().clone(),
+            V_I=prior_params_cpu.V_I.detach().clone(),
+            k_e=prior_params_cpu.k_e.detach().clone(),
+            bioavailability=prior_params_cpu.bioavailability.detach().clone(),
+            beta_cell=prior_params_cpu.beta_cell.detach().clone()
         )
 
         if optimize_parameters and self.num_iterations > 0:
             with torch.enable_grad():
                 # delta: [log_S_I_mult, log_k_empt_mult, log_S_G_mult, G_b_offset]
-                delta = torch.zeros(batch_size, 4, device=device, requires_grad=True)
+                delta = torch.zeros(batch_size, 4, device=cpu_device, requires_grad=True)
                 optimizer = torch.optim.Adam([delta], lr=self.learning_rate)
 
                 # Sub-sample history for fast calibration (every 2nd step -> 48 points)
@@ -143,7 +150,7 @@ class MovingHorizonCalibrator(nn.Module):
                 s_g_mult = torch.exp(torch.clamp(delta_opt[:, 2], -1.0, 1.0))
                 g_b_offset = torch.clamp(delta_opt[:, 3], -40.0, 40.0)
 
-                calibrated_params = PhysiologicalParameters(
+                calibrated_params_cpu = PhysiologicalParameters(
                     S_I=torch.clamp(prior_p.S_I * s_i_mult, PARAMETER_BOUNDS["S_I"][0], PARAMETER_BOUNDS["S_I"][1]),
                     S_G=torch.clamp(prior_p.S_G * s_g_mult, PARAMETER_BOUNDS["S_G"][0], PARAMETER_BOUNDS["S_G"][1]),
                     p2=prior_p.p2,
@@ -160,22 +167,26 @@ class MovingHorizonCalibrator(nn.Module):
                     beta_cell=prior_p.beta_cell
                 )
         else:
-            calibrated_params = prior_p
+            calibrated_params_cpu = prior_p
 
         # Perform exact full-resolution 96-step forward simulation with calibrated parameters
-        # to observe the precise state x(t=0) at the prediction cutoff
+        # to observe the precise state x(t=0) at the prediction cutoff on CPU
         with torch.no_grad():
             _, state_history = self.integrator.forward_simulate(
-                init_state_t_minus_96, past_insulin, past_carbs, calibrated_params
+                init_state_t_minus_96, past_insulin, past_carbs, calibrated_params_cpu
             )
             # State at t=0 (last step in history)
-            state_at_t0 = state_history[-1]
+            state_at_t0_cpu = state_history[-1]
             
             # Align glucose state with the known observed current CGM reading at t=0
             # to eliminate accumulated offset while keeping internal kinetic states (X, S1, S2, Q1, Q2)
             current_cgm_obs = past_cgm[:, -1]
-            state_at_t0.G_p = current_cgm_obs.clone()
-            state_at_t0.G_cgm = current_cgm_obs.clone()
+            state_at_t0_cpu.G_p = current_cgm_obs.clone()
+            state_at_t0_cpu.G_cgm = current_cgm_obs.clone()
+
+        # Safely transfer calibrated parameters and state back to original caller device (e.g. CUDA)
+        calibrated_params = calibrated_params_cpu.to(orig_device)
+        state_at_t0 = state_at_t0_cpu.to(orig_device)
 
         elapsed_ms = (time.time() - t0_time) * 1000.0
         diagnostics = {

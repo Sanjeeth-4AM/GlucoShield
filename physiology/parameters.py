@@ -88,3 +88,13 @@ class PhysiologicalParameters:
             BW=self.BW.clone(), V_I=self.V_I.clone(), k_e=self.k_e.clone(),
             bioavailability=self.bioavailability.clone(), beta_cell=self.beta_cell.clone()
         )
+
+    def to(self, device: torch.device) -> "PhysiologicalParameters":
+        """Transfers all parameter tensors to the target device."""
+        return PhysiologicalParameters(
+            S_I=self.S_I.to(device), S_G=self.S_G.to(device), p2=self.p2.to(device),
+            tau_s=self.tau_s.to(device), k_empt=self.k_empt.to(device), k_abs=self.k_abs.to(device),
+            tau_d=self.tau_d.to(device), G_b=self.G_b.to(device), V_g=self.V_g.to(device),
+            BW=self.BW.to(device), V_I=self.V_I.to(device), k_e=self.k_e.to(device),
+            bioavailability=self.bioavailability.to(device), beta_cell=self.beta_cell.to(device)
+        )

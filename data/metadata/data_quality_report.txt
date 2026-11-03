@@ -1,0 +1,34 @@
+GLUCOSHIELD DATASET AUDIT & ENGINEERING REPORT
+======================================================
+Generated: Leakage-Safe Multi-Modal Digital-Twin Dataset
+
+1. Patient Cohort Breakdown:
+   - Total Unique Patients : 112
+   - T1DM Patients         : 12 (High volatility cohort)
+   - T2DM Patients         : 100 (Standard insulin resistance cohort)
+   - Train Patients        : 78 (T1: 8, T2: 70)
+   - Validation Patients   : 17 (T1: 2, T2: 15)
+   - Test Patients         : 17 (T1: 2, T2: 15)
+
+2. Sequence Statistics:
+   - Input Sequence Length : 96 steps = 24.0 hours
+   - Forecast Horizon      : 20 steps = 5.0 hours (also supports 1h, 2h, 3h, 4h)
+   - Sliding Stride        : 4 steps = 1.0 hour
+   - Total Train Sequences : 19749
+   - Total Val Sequences   : 4585
+   - Total Test Sequences  : 4113
+   - Combined Sequences    : 28447
+
+3. Feature Breakdown (22 Dynamic Channels + 9 Static Clinical Features):
+   - Dynamic Features: glucose, glucose_velocity, glucose_accel, glucose_roll_mean_1h, glucose_roll_std_1h, glucose_roll_min_1h, glucose_roll_max_1h, glucose_roll_mean_3h, glucose_roll_std_3h, glucose_roll_mean_6h, sin_hour, cos_hour, is_night, insulin_basal, insulin_bolus, insulin_total, iob, carbs_estimate_g, meal_flag, cob, insulin_cum_2h, carbs_cum_2h
+   - Static Features : age, bmi, hba1c, glycated_albumin, fasting_glucose, fasting_c_peptide, macrovascular_comp_count, microvascular_comp_count, is_t1dm
+
+4. Leakage Prevention Guarantees:
+   [PASSED] Strict patient-wise stratification (zero patient overlap between train, val, and test).
+   [PASSED] Scaler fitted EXCLUSIVELY on training data, then transformed val/test.
+   [PASSED] Static medians computed EXCLUSIVELY on training patients.
+   [PASSED] All temporal rolling statistics and IOB/COB decays are strictly causal (past-only).
+   [PASSED] Sequences never cross patient or visit boundaries.
+
+5. Deprecated Prototypes:
+   - Old prototype .pt models removed from active workspace and moved to data/deprecated/old_test_models/.

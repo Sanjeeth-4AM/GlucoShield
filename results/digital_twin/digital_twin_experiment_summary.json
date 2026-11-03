@@ -1,0 +1,323 @@
+{
+  "model_name": "GlucoShield_Mechanistic_Digital_Twin_and_Hybrid_Fusion",
+  "hardware": "CUDA (NVIDIA GeForce RTX 4050 Laptop GPU) | PyTorch 2.13.0+cu126",
+  "locked_seed": 7,
+  "multi_seed_stability": {
+    "seeds": [
+      42,
+      123,
+      7
+    ],
+    "val_rmse_mean": 30.9779,
+    "val_rmse_std": 0.0393,
+    "val_mae_mean": 21.1698,
+    "val_mae_std": 0.013,
+    "per_seed": [
+      {
+        "seed": 42,
+        "best_epoch": 15,
+        "train_time": 10.45,
+        "val_rmse": 31.023212432861328,
+        "val_mae": 21.186901092529297,
+        "clarke_ab_pct": 95.55179934569247
+      },
+      {
+        "seed": 123,
+        "best_epoch": 13,
+        "train_time": 7.22,
+        "val_rmse": 30.983041763305664,
+        "val_mae": 21.166950225830078,
+        "clarke_ab_pct": 95.52344601962922
+      },
+      {
+        "seed": 7,
+        "best_epoch": 8,
+        "train_time": 6.9,
+        "val_rmse": 30.927459716796875,
+        "val_mae": 21.155439376831055,
+        "clarke_ab_pct": 95.53435114503816
+      }
+    ]
+  },
+  "validation_benchmark": {
+    "ridge_val_rmse": 35.8,
+    "neural_v1_val_rmse": 31.01,
+    "standalone_pop_ode_val_rmse": 49.74,
+    "standalone_prior_ode_val_rmse": 46.58,
+    "standalone_calib_ode_val_rmse": 46.68,
+    "hybrid_val_rmse": 30.9275,
+    "hybrid_val_mae": 21.1554
+  },
+  "test_performance": {
+    "overall": {
+      "num_sequences": 4113,
+      "MAE": 24.142736434936523,
+      "RMSE": 34.774444580078125,
+      "Zone_A_pct": 68.58375881351812,
+      "Zone_B_pct": 26.772428884026255,
+      "Zone_AB_pct": 95.35618769754437
+    },
+    "horizons": {
+      "15min (k=1)": {
+        "MAE": 6.728620529174805,
+        "RMSE": 8.932512283325195,
+        "Zone_AB_pct": 99.39217116460006
+      },
+      "30min (k=2)": {
+        "MAE": 11.16106128692627,
+        "RMSE": 16.155797958374023,
+        "Zone_AB_pct": 98.83296863603209
+      },
+      "45min (k=3)": {
+        "MAE": 14.599783897399902,
+        "RMSE": 21.44613265991211,
+        "Zone_AB_pct": 98.32239241429613
+      },
+      "1h (k=4)": {
+        "MAE": 17.48204231262207,
+        "RMSE": 25.595727920532227,
+        "Zone_AB_pct": 97.20398735716023
+      },
+      "2h (k=8)": {
+        "MAE": 25.00906753540039,
+        "RMSE": 35.45964050292969,
+        "Zone_AB_pct": 94.77267201556042
+      },
+      "3h (k=12)": {
+        "MAE": 27.88649559020996,
+        "RMSE": 38.51206588745117,
+        "Zone_AB_pct": 94.11621687332847
+      },
+      "4h (k=16)": {
+        "MAE": 29.011993408203125,
+        "RMSE": 39.70082473754883,
+        "Zone_AB_pct": 94.16484318016046
+      },
+      "5h (k=20)": {
+        "MAE": 30.903154373168945,
+        "RMSE": 41.88972091674805,
+        "Zone_AB_pct": 93.7028932652565
+      }
+    },
+    "subgroups": {
+      "T1DM": {
+        "num_sequences": 507,
+        "num_patients": 2,
+        "MAE": 26.93620491027832,
+        "RMSE": 37.1986198425293,
+        "Zone_AB_pct": 89.37869822485207
+      },
+      "T2DM": {
+        "num_sequences": 3606,
+        "num_patients": 15,
+        "MAE": 23.749975204467773,
+        "RMSE": 34.419921875,
+        "Zone_AB_pct": 96.19661674986133
+      }
+    },
+    "macro_patient": {
+      "macro_patient_mae_mean": 24.961555200464584,
+      "macro_patient_mae_std": 7.1653866491500064,
+      "macro_patient_rmse_mean": 34.26602352366728,
+      "macro_patient_rmse_std": 9.749462000121017
+    },
+    "risk_classification": {
+      "hypo_1h": {
+        "prevalence_pct": 5.42,
+        "threshold": 0.35,
+        "sensitivity_recall": 80.27,
+        "specificity": 97.15,
+        "precision": 61.72,
+        "f1_score": 69.79,
+        "auroc": 0.9694,
+        "auprc": 0.7796,
+        "brier_score": 0.0235
+      },
+      "hypo_2h": {
+        "prevalence_pct": 7.22,
+        "threshold": 0.35,
+        "sensitivity_recall": 70.71,
+        "specificity": 96.46,
+        "precision": 60.87,
+        "f1_score": 65.42,
+        "auroc": 0.9434,
+        "auprc": 0.7206,
+        "brier_score": 0.0351
+      },
+      "hypo_4h": {
+        "prevalence_pct": 10.31,
+        "threshold": 0.35,
+        "sensitivity_recall": 65.09,
+        "specificity": 94.23,
+        "precision": 56.44,
+        "f1_score": 60.46,
+        "auroc": 0.9003,
+        "auprc": 0.6598,
+        "brier_score": 0.0577
+      },
+      "hyper_2h": {
+        "prevalence_pct": 32.34,
+        "threshold": 0.5,
+        "sensitivity_recall": 78.65,
+        "specificity": 92.45,
+        "precision": 83.28,
+        "f1_score": 80.9,
+        "auroc": 0.9407,
+        "auprc": 0.91,
+        "brier_score": 0.0872
+      },
+      "hyper_4h": {
+        "prevalence_pct": 42.74,
+        "threshold": 0.5,
+        "sensitivity_recall": 78.67,
+        "specificity": 86.88,
+        "precision": 81.74,
+        "f1_score": 80.17,
+        "auroc": 0.9217,
+        "auprc": 0.9081,
+        "brier_score": 0.1118
+      }
+    }
+  },
+  "standalone_ode_test_performance": {
+    "overall": {
+      "num_sequences": 4113,
+      "MAE": 40.61009216308594,
+      "RMSE": 52.66679763793945,
+      "Zone_A_pct": 42.77777777777778,
+      "Zone_B_pct": 46.85144663262825,
+      "Zone_AB_pct": 89.62922441040602
+    },
+    "horizons": {
+      "15min (k=1)": {
+        "MAE": 9.32643985748291,
+        "RMSE": 12.2349214553833,
+        "Zone_AB_pct": 98.05494772672016
+      },
+      "30min (k=2)": {
+        "MAE": 19.87657356262207,
+        "RMSE": 25.518428802490234,
+        "Zone_AB_pct": 96.01264283977632
+      },
+      "45min (k=3)": {
+        "MAE": 28.655935287475586,
+        "RMSE": 36.8679084777832,
+        "Zone_AB_pct": 95.30756139071238
+      },
+      "1h (k=4)": {
+        "MAE": 35.175636291503906,
+        "RMSE": 45.21120834350586,
+        "Zone_AB_pct": 90.71237539508874
+      },
+      "2h (k=8)": {
+        "MAE": 44.811283111572266,
+        "RMSE": 56.741355895996094,
+        "Zone_AB_pct": 89.35083880379285
+      },
+      "3h (k=12)": {
+        "MAE": 45.726654052734375,
+        "RMSE": 57.53205871582031,
+        "Zone_AB_pct": 88.35399951373694
+      },
+      "4h (k=16)": {
+        "MAE": 45.71070098876953,
+        "RMSE": 57.30957794189453,
+        "Zone_AB_pct": 87.08971553610503
+      },
+      "5h (k=20)": {
+        "MAE": 45.682350158691406,
+        "RMSE": 57.15694808959961,
+        "Zone_AB_pct": 87.08971553610503
+      }
+    }
+  },
+  "benchmark_comparison": {
+    "ridge_test_rmse": 35.8,
+    "neural_test_rmse": 34.9,
+    "standalone_ode_test_rmse": 52.6668,
+    "hybrid_test_rmse": 34.7744,
+    "rmse_impr_over_ridge": 1.03,
+    "rmse_impr_over_neural": 0.13,
+    "ridge_test_mae": 25.37,
+    "neural_test_mae": 24.45,
+    "standalone_ode_test_mae": 40.6101,
+    "hybrid_test_mae": 24.1427,
+    "mae_impr_over_ridge": 1.23,
+    "mae_impr_over_neural": 0.31
+  },
+  "counterfactual_scenarios": {
+    "1_meal_size_variation": {
+      "30g": {
+        "peak": 160.4,
+        "nadir": 115.6,
+        "tir": 100.0
+      },
+      "60g": {
+        "peak": 217.6,
+        "nadir": 120.4,
+        "tir": 55.0
+      },
+      "90g": {
+        "peak": 274.1,
+        "nadir": 121.2,
+        "tir": 40.0
+      }
+    },
+    "2_meal_timing_variation": {
+      "immediate_meal": {
+        "nadir": 120.4,
+        "peak": 217.6
+      },
+      "delayed_30m_meal": {
+        "nadir": 115.7,
+        "peak": 212.9
+      }
+    },
+    "3_bolus_timing_variation": {
+      "pre_bolus_15m": {
+        "peak": 214.6,
+        "nadir": 118.3
+      },
+      "at_meal_bolus": {
+        "peak": 217.6,
+        "nadir": 120.4
+      },
+      "post_bolus_15m": {
+        "peak": 220.6,
+        "nadir": 120.4
+      }
+    },
+    "4_bolus_dose_variation": {
+      "2U": {
+        "peak": 223.9,
+        "nadir": 120.4,
+        "tir": 50.0
+      },
+      "4U": {
+        "peak": 217.6,
+        "nadir": 120.4,
+        "tir": 55.0
+      },
+      "6U": {
+        "peak": 211.8,
+        "nadir": 120.4,
+        "tir": 65.0
+      },
+      "8U": {
+        "peak": 206.1,
+        "nadir": 120.1,
+        "tir": 70.0
+      }
+    },
+    "5_rescue_carbohydrates": {
+      "unmitigated_nadir": 86.9,
+      "rescue_15g_nadir": 86.9,
+      "protection_gain_mg_dl": 0.0
+    },
+    "6_hyperglycemia_correction": {
+      "no_correction_end_glucose": 110.7,
+      "with_2U_correction_end_glucose": 107.1,
+      "correction_reduction_mg_dl": 3.5
+    }
+  }
+}

@@ -18,7 +18,8 @@ AMBIGUITY_DELTA = 0.15
 def evaluate_meal_confidence(
     candidates: List[FoodCandidate],
     nutrition: Optional[NutritionResult],
-    portion_g: Optional[float]
+    portion_g: Optional[float],
+    recognition_error: Optional[str] = None
 ) -> Tuple[bool, List[str]]:
     """
     Evaluates prediction uncertainty and generates clinical warnings.
@@ -31,23 +32,28 @@ def evaluate_meal_confidence(
 
     # 1. Check Image Recognition Quality
     if not candidates:
-        warnings.append("No food items recognized in photograph. Manual entry required.")
+        if recognition_error:
+            err_clean = recognition_error.rstrip('.')
+            warnings.append(f"Visual classification unavailable: {err_clean}. Manual food description required.")
+        else:
+            warnings.append("No food items recognized in photograph. Manual entry required.")
         return True, warnings
 
     top_candidate = candidates[0]
     
-    if top_candidate.confidence < CONFIDENCE_THRESHOLD_LOW:
-        warnings.append(
-            f"Low visual recognition confidence ({top_candidate.confidence*100:.1f}% for '{top_candidate.name}'). "
-            "Please confirm or select the correct item."
-        )
-    elif len(candidates) > 1:
-        second_cand = candidates[1]
-        if (top_candidate.confidence - second_cand.confidence) < AMBIGUITY_DELTA:
+    if top_candidate.confidence is not None:
+        if top_candidate.confidence < CONFIDENCE_THRESHOLD_LOW:
             warnings.append(
-                f"Visual ambiguity detected between '{top_candidate.name}' and '{second_cand.name}'. "
-                "Please verify the dish selection."
+                f"Low visual recognition confidence ({top_candidate.confidence*100:.1f}% for '{top_candidate.name}'). "
+                "Please confirm or select the correct item."
             )
+        elif len(candidates) > 1 and candidates[1].confidence is not None:
+            second_cand = candidates[1]
+            if (top_candidate.confidence - second_cand.confidence) < AMBIGUITY_DELTA:
+                warnings.append(
+                    f"Visual ambiguity detected between '{top_candidate.name}' and '{second_cand.name}'. "
+                    "Please verify the dish selection."
+                )
 
     # 2. Check Nutritional Lookup Quality
     if nutrition is None:

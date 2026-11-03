@@ -96,7 +96,7 @@ export function SystemSpecsPanel({ backendHealth }) {
             B. Static 9-Channel Phenotype Contract (1, 9)
           </span>
           <p className="text-[11px] text-[#bac9cc]">
-            age_years, bmi_kg_m2, diabetes_duration_years, hba1c_pct, glycated_albumin_pct, fasting_glucose_mg_dl, c_peptide_ng_ml, has_complications, is_t1dm.
+            age, bmi, hba1c, glycated_albumin, fasting_glucose, fasting_c_peptide, macrovascular_comp_count, microvascular_comp_count, is_t1dm. (Note: diabetes_duration_years is retained in clinical profile metadata).
           </p>
         </div>
       </div>

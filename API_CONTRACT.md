@@ -72,6 +72,7 @@ GlucoShield exposes a production-grade REST API service powered by **FastAPI** t
   "static_profile": {
     "age": 45.0,
     "bmi": 26.5,
+    "diabetes_duration_years": 10.0, // Retained as clinical record metadata; exempt from acute 9-channel model vector
     "hba1c": 58.0,
     "glycated_albumin": 18.0,
     "fasting_glucose": 130.0,

@@ -1,0 +1,10 @@
+{
+  "models": {
+    "glucoshield_v2_best.pt": {
+      "path": "D:/ML PROJECT\\models\\v2\\glucoshield_v2_best.pt",
+      "size_bytes": 1090463,
+      "device": "cuda",
+      "sha256": "fee7c966b41497bcb3bba9bff60bb47ccdab02c15afea8c1c3cb52b74b7abdc2"
+    }
+  }
+}

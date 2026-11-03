@@ -108,6 +108,19 @@ class MetabolicState:
             Q2=self.Q2.clone()
         )
 
+    def to(self, device: torch.device) -> "MetabolicState":
+        """Transfers all state tensors to the target device."""
+        return MetabolicState(
+            G_p=self.G_p.to(device),
+            G_cgm=self.G_cgm.to(device),
+            X=self.X.to(device),
+            I_p=self.I_p.to(device),
+            S1=self.S1.to(device),
+            S2=self.S2.to(device),
+            Q1=self.Q1.to(device),
+            Q2=self.Q2.to(device)
+        )
+
     @property
     def iob(self) -> torch.Tensor:
         """Current Insulin-on-Board in Units."""

@@ -1,66 +1,127 @@
 import React from "react";
-import { Sparkles, Brain, Cpu, CheckCircle2 } from "lucide-react";
+import { Info, Sparkles } from "lucide-react";
 
-export function ExplanationCard({ explanations, hybridComponents }) {
-  const summary = explanations?.natural_language_summary ||
-    "Continuous glucose sequence indicates stable metabolic equilibrium under active basal insulin coverage.";
-  const metabolicDrivers = explanations?.metabolic_drivers || [
-    "Hepatic EGP balance (Gb = 108 mg/dL)",
-    "Active basal insulin depot clearance (IOB = 1.4U)",
-    "Residual gut absorption flux (COB = 24g)"
-  ];
-  const neuralPct = hybridComponents?.mean_neural_weight_pct ?? 72;
-  const odePct = 100 - neuralPct;
+export function ExplanationCard({ explanation, explanations, hybridComponents }) {
+  const exp = explanation || explanations;
+
+  // Extract genuine drivers or metabolic factors from backend explanation
+  const rawDrivers = exp?.forecast_drivers || [];
+  const metabolicFactors = exp?.metabolic_factors || [];
+
+  let displayDrivers = [];
+
+  if (rawDrivers.length > 0) {
+    displayDrivers = rawDrivers.map((d, idx) => ({
+      title: `${idx + 1}. ${d.name || d.driver_name || "Metabolic Parameter"}`,
+      subtitle: d.value_text || null,
+      vector: d.direction === "up" ? "↑" : d.direction === "down" ? "↓" : "→",
+      vectorColor: d.direction === "up" ? "text-secondary" : d.direction === "down" ? "text-tertiary" : "text-primary",
+      impactTag: d.impact_level || "Active Factor",
+      description: d.explanation || d.clinical_rationale || "Physiological contribution to 5-hour forward projection."
+    }));
+  } else if (metabolicFactors.length > 0) {
+    displayDrivers = metabolicFactors.map((factor, idx) => {
+      const isCarb = factor.toLowerCase().includes("carbohydrate");
+      const isInsulin = factor.toLowerCase().includes("insulin");
+      const isDown = isInsulin && !factor.toLowerCase().includes("low insulin");
+      const isUp = isCarb && !factor.toLowerCase().includes("minimal");
+
+      return {
+        title: `${idx + 1}. ${isCarb ? "Carbohydrate Influx" : isInsulin ? "Insulin Pharmacodynamics" : "Physiological Momentum"}`,
+        subtitle: null,
+        vector: isUp ? "↑" : isDown ? "↓" : "→",
+        vectorColor: isUp ? "text-secondary" : isDown ? "text-tertiary" : "text-primary",
+        impactTag: isUp ? "Absorption" : isDown ? "Clearance" : "Equilibrium",
+        description: factor
+      };
+    });
+  }
+
+  const hasExplanation = displayDrivers.length > 0 || Boolean(exp?.trend_summary);
 
   return (
-    <div className="glass-panel instrument-border rounded-xl p-5 space-y-4">
-      {/* Header */}
-      <div className="flex justify-between items-center">
-        <span className="font-mono text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
-          <Brain className="w-4 h-4 text-[#00daf3]" />
-          Interpretable AI Decision Explanation
-        </span>
-        <span className="font-mono text-[10px] text-[#bac9cc] bg-[#070d1f] border border-white/10 px-2.5 py-0.5 rounded">
-          MC-Dropout Uncertainty Calibrated
-        </span>
-      </div>
-
-      {/* Summary Box */}
-      <div className="p-3.5 rounded-lg bg-[#070d1f]/80 border-l-2 border-l-[#00daf3] text-xs text-white leading-relaxed">
-        {summary}
-      </div>
-
-      {/* Metabolic Drivers List */}
+    <div className="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between border border-surface-container h-full">
       <div>
-        <span className="font-mono text-[10px] text-[#bac9cc] uppercase tracking-wider block mb-2">
-          Primary Physiological Drivers
-        </span>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-          {metabolicDrivers.map((driver, idx) => (
-            <div
-              key={idx}
-              className="p-2.5 rounded-lg bg-[#070d1f]/60 border border-white/10 text-xs font-mono text-[#bac9cc] flex items-center gap-2"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00daf3]"></span>
-              <span className="truncate">{driver}</span>
-            </div>
-          ))}
+        <div className="flex items-center gap-space-xs">
+          <span className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">
+            SECTION D
+          </span>
+          <span className="text-outline-variant">•</span>
+          <h2 className="font-label-md text-label-md font-semibold text-on-surface">
+            Why is the model predicting this?
+          </h2>
         </div>
+        <p className="font-body-sm text-body-sm text-on-surface-variant mt-0.5 mb-space-md">
+          Primary verified production drivers in Combination C architecture
+        </p>
+
+        {exp?.trend_summary && (
+          <div className="mb-space-sm p-space-sm rounded bg-surface-container-low border border-surface-container">
+            <span className="font-label-sm text-label-sm font-semibold text-on-surface block mb-0.5">
+              Trajectory Summary
+            </span>
+            <p className="font-body-sm text-body-sm text-on-surface-variant">
+              {exp.trend_summary}
+            </p>
+          </div>
+        )}
+
+        {hasExplanation ? (
+          <div className="space-y-space-sm">
+            {displayDrivers.map((driver, idx) => (
+              <div key={idx} className="bg-surface-container-low p-space-sm rounded border border-surface-container">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-label-md text-label-md font-semibold text-on-surface">
+                      {driver.title}
+                    </span>
+                    {driver.subtitle && (
+                      <span className="font-code-sm text-code-sm text-secondary font-medium">
+                        ({driver.subtitle})
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className={`font-bold text-sm ${driver.vectorColor}`}>{driver.vector}</span>
+                    <span className="px-1.5 py-0.5 rounded bg-surface-container-high font-code-sm text-code-sm font-semibold text-on-surface">
+                      {driver.impactTag}
+                    </span>
+                  </div>
+                </div>
+                <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                  {driver.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="p-space-lg rounded-lg bg-surface-container-low text-center border border-surface-container">
+            <Info className="w-5 h-5 text-outline mx-auto mb-1.5" />
+            <span className="font-label-md text-label-md text-on-surface font-semibold block">
+              Model attribution unavailable
+            </span>
+            <span className="font-body-sm text-body-sm text-on-surface-variant mt-1 block">
+              Generate a forecast to view verified physiological attribution drivers.
+            </span>
+          </div>
+        )}
+
+        {exp?.uncertainty_rationale && (
+          <div className="mt-space-sm p-space-sm rounded bg-surface-container-low border border-surface-container">
+            <span className="font-label-sm text-label-sm font-semibold text-on-surface block mb-0.5">
+              Uncertainty &amp; Downside Dispersion Analysis
+            </span>
+            <p className="font-body-sm text-body-sm text-on-surface-variant">
+              {exp.uncertainty_rationale}
+            </p>
+          </div>
+        )}
       </div>
 
-      {/* Hybrid Model Attribution Breakdown */}
-      <div className="pt-2 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 font-mono text-xs">
-        <span className="text-[#bac9cc]">Hybrid Model Attribution:</span>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#d0bcff]"></span>
-            <span className="text-white font-bold">{neuralPct}% Neural Forecaster (GRU-128)</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#00daf3]"></span>
-            <span className="text-white font-bold">{odePct}% Hovorka Physics ODE Twin</span>
-          </div>
-        </div>
+      <div className="mt-space-md pt-space-xs text-right">
+        <span className="font-code-sm text-code-sm text-outline">
+          {exp?.hybrid_attribution || "Attribution: Production Model Combination C"}
+        </span>
       </div>
     </div>
   );

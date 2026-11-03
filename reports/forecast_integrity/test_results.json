@@ -1,0 +1,81 @@
+{
+  "test_suite_execution_report": {
+    "timestamp": "2026-10-12T01:14:43+05:30",
+    "environment": {
+      "node_version": "v20+",
+      "platform": "win32",
+      "model_serving": "COMBINATION_C",
+      "target_project": "GlucoShield"
+    },
+    "summary": {
+      "total_tests": 24,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "suites": 3,
+      "duration_ms": 75.45
+    },
+    "suites": [
+      {
+        "name": "Frontend API Contracts & Demo Data Integrity",
+        "tests": [
+          { "name": "should generate exactly 96 15-minute readings for 24 hours", "status": "pass" },
+          { "name": "should generate 20-step multi-horizon forecast data with monotonic 95% >= 80% intervals", "status": "pass" },
+          { "name": "should simulate What-If postprandial trajectories with peak, nadir, and TIR", "status": "pass" },
+          { "name": "should preserve static profile 9-channel schema", "status": "pass" },
+          { "name": "should enforce clinical research disclaimer string", "status": "pass" },
+          { "name": "should sanitize forecast payload against circular React SyntheticEvent objects", "status": "pass" },
+          { "name": "should format patient update PUT request with Bearer token and 9 canonical fields", "status": "pass" }
+        ]
+      },
+      {
+        "name": "Forecast Data Consistency & Clinical Integrity",
+        "tests": [
+          { "name": "should compute distinct Historical In-Range and 5-Hour Projected In-Range without 94.2% fallback", "status": "pass" },
+          { "name": "should map 5 hourly milestone steps in chronological order matching point_forecast_mg_dl", "status": "pass" },
+          { "name": "should derive origin glucose and peak projection strictly without synthetic fallbacks", "status": "pass" },
+          { "name": "should enforce origin precedence: API origin takes precedence over history, history used only if API is null", "status": "pass" },
+          { "name": "should handle non-hourly peak index (+75m) and format timing accurately without confusing hourly milestones", "status": "pass" },
+          { "name": "should sanitize non-finite numbers and reject inverted uncertainty intervals", "status": "pass" },
+          { "name": "should preserve base forecast mean trajectory under filter toggle operations and What-If scenarios", "status": "pass" },
+          { "name": "should gracefully handle empty history with valid current_state by prepending NOW anchor", "status": "pass" }
+        ]
+      },
+      {
+        "name": "9 Representative Forecast Validation Cases",
+        "tests": [
+          { "name": "Case 1: Normal forecast with complete response evaluates all 20 steps and intervals", "status": "pass" },
+          { "name": "Case 2: Missing optional risk-assessment fields derives peak from trajectory and maintains nominal state", "status": "pass" },
+          { "name": "Case 3: Telemetry pending with historical readings anchors origin to latest CGM and displays unavailable for forecast", "status": "pass" },
+          { "name": "Case 4: Empty history and no valid origin renders null origin without synthetic numbers", "status": "pass" },
+          { "name": "Case 5: Short forecast array (5 steps) populates valid milestones and marks remaining steps as unavailable", "status": "pass" },
+          { "name": "Case 6: Missing uncertainty intervals flags unavailable and renders mean line cleanly", "status": "pass" },
+          { "name": "Case 7: Forecast with peak at non-hourly index (+30m) formats peak accurately without altering hourly rows", "status": "pass" },
+          { "name": "Case 8: What-If scenario present and absent toggles overlay cleanly without mutating base forecast", "status": "pass" },
+          { "name": "Case 9: API error or unavailable backend results in null forecast with graceful awaiting status", "status": "pass" }
+        ]
+      }
+    ],
+    "build_verification": {
+      "command": "npm run build --prefix frontend",
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_ms": 400
+    },
+    "backend_combination_c_verification": {
+      "command": "python -m unittest tests/test_combination_c_serving.py",
+      "exit_code": 0,
+      "tests_run": 9,
+      "status": "PASS"
+    },
+    "scientific_freeze_hashes": {
+      "models/glucoshield_neural_best.pt": { "hash": "026af3341a91064136c38b0172f2aa6af34806913640a02270c7d82a28ea13fb", "status": "MATCH" },
+      "models/glucoshield_hybrid_best.pt": { "hash": "89a67710aa4931246f9097674332cbfd9d1af3d20c722c04d806ef66e47298d1", "status": "MATCH" },
+      "data/metadata/feature_scaler.joblib": { "hash": "757f5c99e294dc8c5698a42cee1843853e8506df5203508aa71a1462d545972b", "status": "MATCH" },
+      "data/metadata/static_scaler.joblib": { "hash": "fedc25f67dbcefd2c19ff38375568f3f2bc83ac1fa7c29840e5c81d33b479576", "status": "MATCH" },
+      "models/v2/glucoshield_v2_best.pt": { "hash": "fee7c966b41497bcb3bba9bff60bb47ccdab02c15afea8c1c3cb52b74b7abdc2", "status": "MATCH" },
+      "scratch/phase13_disagreement_gate/frozen_gate_config.json": { "hash": "a7d9aaaa908fdfb3667e6285312722ab5e7209286bc070203f48ea507f97964f", "status": "MATCH" },
+      "scratch/phase13_patient_specific_ode/ode_adaptation_config.json": { "hash": "25617ef1104b32bf24a2ed83db16f679a00e247e02ef846c6e41cd5e184d32d8", "status": "MATCH" }
+    }
+  }
+}

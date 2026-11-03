@@ -1,0 +1,19 @@
+{
+  "model_version": "2.0.0",
+  "architecture": "GlucoShieldHybridForecasterV2",
+  "neural_backbone": "2-layer GRU (128 units)",
+  "context_encoder_dim": 32,
+  "fusion_layer_dim": 128,
+  "dynamic_channels": 22,
+  "static_channels": 9,
+  "factor_domains": [
+    "exercise",
+    "sleep",
+    "hormonal",
+    "circadian"
+  ],
+  "loss": "SmoothL1_Huber + MultiQuantile_Pinball + Physics_Regularization",
+  "uncertainty_type": "RegimeConditioned_Heteroscedastic_Quantile",
+  "training_time_seconds": 178.85773992538452,
+  "device": "cuda"
+}

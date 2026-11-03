@@ -8,6 +8,7 @@ from food_vision.providers.mock_provider import MockFoodRecognitionProvider, Moc
 from food_vision.providers.usda_nutrition_provider import USDANutritionProvider
 from food_vision.providers.openfoodfacts_provider import OpenFoodFactsProvider
 from food_vision.providers.huggingface_food_provider import HuggingFaceFoodRecognitionProvider
+from food_vision.providers.local_food_provider import LocalFoodRecognitionProvider
 
 __all__ = [
     "BaseFoodRecognitionProvider",
@@ -16,5 +17,6 @@ __all__ = [
     "MockNutritionProvider",
     "USDANutritionProvider",
     "OpenFoodFactsProvider",
-    "HuggingFaceFoodRecognitionProvider"
+    "HuggingFaceFoodRecognitionProvider",
+    "LocalFoodRecognitionProvider"
 ]

@@ -30,16 +30,16 @@ class SafetyGuardrails:
     def validate_inputs(
         cls,
         current_glucose: float,
-        proposed_carbs: float,
-        proposed_bolus: float
+        proposed_carbs: Optional[float],
+        proposed_bolus: Optional[float]
     ) -> List[str]:
         """Validates that incoming parameters are within plausible bounds."""
         warnings = []
         if current_glucose < 30.0 or current_glucose > 600.0:
             warnings.append(f"Input glucose value ({current_glucose:.1f} mg/dL) is outside valid sensor limits [30, 600].")
-        if proposed_carbs < 0.0 or proposed_carbs > 350.0:
+        if proposed_carbs is not None and (proposed_carbs < 0.0 or proposed_carbs > 350.0):
             warnings.append(f"Proposed meal carb quantity ({proposed_carbs:.1f}g) exceeds realistic single-meal bounds [0, 350g].")
-        if proposed_bolus < 0.0 or proposed_bolus > 50.0:
+        if proposed_bolus is not None and (proposed_bolus < 0.0 or proposed_bolus > 50.0):
             warnings.append(f"Proposed insulin bolus ({proposed_bolus:.1f} U) exceeds standard safety limits [0, 50 U].")
         return warnings
 
